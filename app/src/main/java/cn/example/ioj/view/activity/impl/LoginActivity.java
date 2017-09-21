@@ -31,4 +31,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter>implements ILogin
         setContentView(R.layout.activity_login);
 
     }
+
+    @Override
+    public void showError(int code) {
+
+    }
 }
