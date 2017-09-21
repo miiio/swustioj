@@ -1,6 +1,7 @@
 package cn.example.ioj.view.activity.impl;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import cn.example.ioj.R;
 import cn.example.ioj.presenter.impl.FirstActivityPresenter;
@@ -18,6 +19,7 @@ public class FirstActivity extends BaseActivity<FirstActivityPresenter> implemen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
+        Log.i("a","a");
     }
 
     @Override
