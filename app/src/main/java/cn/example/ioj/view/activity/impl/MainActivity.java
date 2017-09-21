@@ -21,6 +21,7 @@ public class MainActivity extends BaseActivity implements IBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.i("a","a");
+        Log.v("MainActivity","1");
     }
 
     @Override
