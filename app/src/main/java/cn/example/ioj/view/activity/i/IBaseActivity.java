@@ -8,5 +8,5 @@ package cn.example.ioj.view.activity.i;
  */
 
 public interface IBaseActivity {
-
+    void showError(int code);
 }
