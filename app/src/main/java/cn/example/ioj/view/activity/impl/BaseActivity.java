@@ -37,7 +37,6 @@ public abstract class BaseActivity<P extends BasePresenter & IBasePresenter>
         super.finish();
     }
 
-
     @Override
     protected void onDestroy() {
         if (mPresenter != null) {
