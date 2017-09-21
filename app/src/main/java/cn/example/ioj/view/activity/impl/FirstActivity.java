@@ -21,6 +21,7 @@ public class FirstActivity extends BaseActivity<FirstActivityPresenter> implemen
         setContentView(R.layout.activity_first);
         Log.i("a","a");
         Log.i("b","b");
+        Log.i("c","c");
     }
 
     @Override
