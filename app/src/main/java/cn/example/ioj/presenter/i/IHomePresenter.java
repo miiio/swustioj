@@ -5,4 +5,5 @@ package cn.example.ioj.presenter.i;
  */
 
 public interface IHomePresenter extends IBaseFragmentPresenter {
+    void loadBanner();
 }

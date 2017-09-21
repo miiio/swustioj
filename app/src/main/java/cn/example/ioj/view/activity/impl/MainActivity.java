@@ -14,6 +14,7 @@ import cn.example.ioj.R;
 import cn.example.ioj.presenter.impl.BasePresenter;
 import cn.example.ioj.presenter.impl.MainPresenter;
 import cn.example.ioj.view.activity.i.IBaseActivity;
+import cn.example.ioj.view.fragment.impl.HomeFragment;
 
 /**
  * 主界面
@@ -36,6 +37,8 @@ public class MainActivity extends BaseActivity implements IBaseActivity, BottomN
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();
+
+        setStatusBarTransparent();
     }
 
     private void initView() {
@@ -50,6 +53,7 @@ public class MainActivity extends BaseActivity implements IBaseActivity, BottomN
                 .setActiveColor(R.color.green)
                 .initialise();
         bottombarMain.setTabSelectedListener(this);
+        bottombarMain.selectTab(0);
     }
 
     @Override
@@ -60,7 +64,11 @@ public class MainActivity extends BaseActivity implements IBaseActivity, BottomN
 
     @Override
     public void onTabSelected(int position) {
-
+        switch (position){
+            case 0: //首页
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_main,new HomeFragment()).commit();
+                break;
+        }
     }
 
     @Override

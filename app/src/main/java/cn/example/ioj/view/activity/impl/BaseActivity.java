@@ -2,11 +2,15 @@ package cn.example.ioj.view.activity.impl;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 
+import cn.example.ioj.R;
 import cn.example.ioj.presenter.i.IBasePresenter;
 import cn.example.ioj.presenter.impl.BasePresenter;
 import cn.example.ioj.view.activity.ActivityManager;
+import cn.example.ioj.view.activity.StatusBarManager;
 
 /**
  * Activity的基类
@@ -44,6 +48,58 @@ public abstract class BaseActivity<P extends BasePresenter & IBasePresenter>
             mPresenter = null;
         }
         super.onDestroy();
+    }
+
+
+    /**
+     * 设置状态栏透明,适用于非DrawerLayout
+     */
+    public void setStatusBarTransparent() {
+        new StatusBarManager(this).setStatusBarTransparent();
+    }
+
+    /**
+     * 设置状态栏透明,适用于DrawerLayout
+     *
+     * @param drawerLayout drawerLayout
+     */
+    public void
+    setStatusBarTransparent(DrawerLayout drawerLayout) {
+        new StatusBarManager(this).setStatusBarTransparentForDrawerLayout(drawerLayout);
+    }
+
+    /**
+     * 设置沉浸式状态栏(状态栏与Toolbar颜色相同)
+     * 适用于非DrawerLayout
+     */
+    public void setStatusBarImmerse() {
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(
+//                    getResources().getColor(ThemeActivity.getThemeItem(this).mainColorId)));
+//        }
+//        new StatusBarManager(this)
+//                .setStatusBarColor(ContextCompat.getColor(this, ThemeActivity.getThemeItem(this).mainColorId));
+    }
+
+    /**
+     * 设置沉浸式状态栏(状态栏与Toolbar颜色相同)
+     * 适用于非DrawerLayout
+     * 需自己传入颜色
+     */
+    public void setStatusBarImmerse(int resourseId) {
+        new StatusBarManager(this)
+                .setStatusBarColor(ContextCompat.getColor(this, resourseId));
+    }
+
+    /**
+     * 设置沉浸式状态栏(状态栏与Toolbar颜色相同)
+     * 适用于DrawerLayout
+     *
+     * @param drawerLayout drawerLayout
+     */
+    public void setStatusBarImmerse(DrawerLayout drawerLayout) {
+        new StatusBarManager(this).setStatusBarColorForDrawerLayout(drawerLayout
+                , ContextCompat.getColor(this, R.color.colorPrimary));
     }
 
     /**
