@@ -17,4 +17,9 @@ public class LoginPresenter extends BasePresenter<LoginActivity,BaseModel>implem
     protected BaseModel getModel() {
         return null;
     }
+
+    @Override
+    public void showError(int code) {
+
+    }
 }

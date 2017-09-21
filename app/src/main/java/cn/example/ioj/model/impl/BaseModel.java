@@ -13,6 +13,9 @@ import cn.example.ioj.model.i.IBaseModel;
 
 public abstract class BaseModel implements IBaseModel {
 
+    public BaseModel(){
+
+    }
     /**
      * 释放相关资源,通过presenter调用
      */
