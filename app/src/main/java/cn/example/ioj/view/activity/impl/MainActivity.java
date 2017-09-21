@@ -2,6 +2,7 @@ package cn.example.ioj.view.activity.impl;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import cn.example.ioj.R;
 import cn.example.ioj.presenter.impl.BasePresenter;
@@ -19,6 +20,7 @@ public class MainActivity extends BaseActivity implements IBaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.v("MainActivity","1");
     }
 
     @Override
