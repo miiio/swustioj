@@ -21,7 +21,7 @@ public class FirstActivity extends BaseActivity<FirstActivityPresenter> implemen
         setContentView(R.layout.activity_first);
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent); //直接跳转到MainActivity
-        finish();
+
     }
 
     @Override
