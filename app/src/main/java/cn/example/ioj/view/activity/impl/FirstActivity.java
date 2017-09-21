@@ -1,7 +1,7 @@
 package cn.example.ioj.view.activity.impl;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import cn.example.ioj.R;
 import cn.example.ioj.presenter.impl.FirstActivityPresenter;
@@ -19,9 +19,8 @@ public class FirstActivity extends BaseActivity<FirstActivityPresenter> implemen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-        Log.i("a","a");
-        Log.i("b","b");
-        Log.i("c","c");
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent); //直接跳转到MainActivity
     }
 
     @Override
