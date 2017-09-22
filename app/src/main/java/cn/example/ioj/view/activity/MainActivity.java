@@ -14,6 +14,7 @@ import cn.example.ioj.R;
 import cn.example.ioj.contract.i.MainContract;
 import cn.example.ioj.presenter.BasePresenter;
 import cn.example.ioj.presenter.MainPresenter;
+import cn.example.ioj.view.fragment.AboutMeFragment;
 import cn.example.ioj.view.fragment.HomeFragment;
 
 /**
@@ -67,6 +68,9 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
         switch (position){
             case 0: //首页
                 getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_main,new HomeFragment()).commit();
+                break;
+            case 3:
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_main,new AboutMeFragment()).commit();
                 break;
         }
     }

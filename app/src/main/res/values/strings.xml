@@ -4,4 +4,5 @@
     <string name="login_password_hint">Password</string>
     <string name="login_btn_login">LOGIN</string>
     <string name="login_btn_login_as_tourist">LOGIN AS TOURIST</string>
+    <string name="tourist_id">游客</string>
 </resources>
