@@ -17,4 +17,9 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
     protected MainActivityModel getModel() {
         return null;
     }
+
+    @Override
+    public void showError(int code) {
+
+    }
 }

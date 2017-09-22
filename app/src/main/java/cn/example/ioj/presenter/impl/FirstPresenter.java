@@ -17,4 +17,9 @@ public class FirstPresenter extends BasePresenter<FirstActivity,BaseModel> imple
     protected BaseModel getModel() {
         return null;
     }
+
+    @Override
+    public void showError(int code) {
+
+    }
 }

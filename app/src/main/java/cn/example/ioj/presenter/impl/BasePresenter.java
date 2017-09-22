@@ -19,7 +19,8 @@ import cn.example.ioj.view.activity.impl.BaseActivity;
  */
 
 public abstract class BasePresenter
-        <V extends BaseActivity & IBaseActivity, M extends BaseModel & IBaseModel>{
+        <V extends BaseActivity & IBaseActivity, M extends BaseModel & IBaseModel>
+        implements IBaseActivity{
 
     V mView;
     M mModel;
