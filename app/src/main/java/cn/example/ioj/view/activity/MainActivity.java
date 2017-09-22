@@ -14,7 +14,7 @@ import cn.example.ioj.R;
 import cn.example.ioj.contract.i.MainContract;
 import cn.example.ioj.presenter.BasePresenter;
 import cn.example.ioj.presenter.MainPresenter;
-import cn.example.ioj.view.fragment.impl.HomeFragment;
+import cn.example.ioj.view.fragment.HomeFragment;
 
 /**
  * 主界面

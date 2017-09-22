@@ -4,17 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:id="@+id/bottombar_main"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <FrameLayout
         android:id="@+id/framelayout_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottombar_main"
+        android:layout_alignParentTop="true">
     </FrameLayout>
 
 
-    <com.ashokvarma.bottomnavigation.BottomNavigationBar
-        android:layout_alignParentBottom="true"
-        android:id="@+id/bottombar_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+
 </RelativeLayout>

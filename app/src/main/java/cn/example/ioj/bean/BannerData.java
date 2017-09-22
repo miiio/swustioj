@@ -8,6 +8,16 @@ import java.util.List;
 
 public class BannerData {
 
+    private String notice;
+
+    public String getNotice() {
+        return notice;
+    }
+
+    public void setNotice(String notice) {
+        this.notice = notice;
+    }
+
     private List<BannerdataBean> bannerdata;
 
     public List<BannerdataBean> getBannerdata() {

@@ -4,7 +4,7 @@ import cn.example.ioj.bean.BannerData;
 import cn.example.ioj.contract.i.HomeContract;
 import cn.example.ioj.contract.i.NetWorkLoaderListener;
 import cn.example.ioj.model.HomeModel;
-import cn.example.ioj.view.fragment.impl.HomeFragment;
+import cn.example.ioj.view.fragment.HomeFragment;
 
 /**
  * Created by L on 2017/9/21.

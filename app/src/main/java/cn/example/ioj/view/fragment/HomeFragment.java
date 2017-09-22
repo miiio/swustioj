@@ -1,4 +1,4 @@
-package cn.example.ioj.view.fragment.impl;
+package cn.example.ioj.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -87,5 +87,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 }
             }
         });
+
+
     }
 }
