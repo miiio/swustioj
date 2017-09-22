@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">IOJ</string>
-    <string name="login_username_hint">用户名</string>
-    <string name="login_password_hint">密码</string>
+    <string name="login_username_hint">Username</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_btn_login">LOGIN</string>
+    <string name="login_btn_login_as_tourist">LOGIN AS TOURIST</string>
 </resources>

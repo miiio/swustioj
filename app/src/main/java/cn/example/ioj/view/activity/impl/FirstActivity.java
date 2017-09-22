@@ -19,7 +19,8 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements IFirs
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-        Intent intent = new Intent(this,MainActivity.class);
+//        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent=new Intent(this,LoginActivity.class);
         startActivity(intent); //直接跳转到MainActivity
 
     }
