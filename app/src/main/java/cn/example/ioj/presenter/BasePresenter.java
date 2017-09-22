@@ -1,8 +1,8 @@
-package cn.example.ioj.presenter.impl;
+package cn.example.ioj.presenter;
 
 import cn.example.ioj.contract.i.BaseContract;
-import cn.example.ioj.model.impl.BaseModel;
-import cn.example.ioj.view.activity.impl.BaseActivity;
+import cn.example.ioj.model.BaseModel;
+import cn.example.ioj.view.activity.BaseActivity;
 
 /**
  * 所有Presenter的父类

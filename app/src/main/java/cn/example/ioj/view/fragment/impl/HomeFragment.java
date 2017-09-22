@@ -19,7 +19,7 @@ import butterknife.Unbinder;
 import cn.example.ioj.R;
 import cn.example.ioj.bean.BannerData;
 import cn.example.ioj.contract.i.HomeContract;
-import cn.example.ioj.presenter.impl.HomePresenter;
+import cn.example.ioj.presenter.HomePresenter;
 import cn.example.ioj.util.BannerImageLoader;
 
 /**

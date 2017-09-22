@@ -1,4 +1,4 @@
-package cn.example.ioj.model.i;
+package cn.example.ioj.contract.i;
 
 import cn.example.ioj.bean.BannerData;
 import retrofit2.Call;

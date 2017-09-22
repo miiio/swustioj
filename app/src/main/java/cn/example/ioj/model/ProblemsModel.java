@@ -1,4 +1,4 @@
-package cn.example.ioj.model.impl;
+package cn.example.ioj.model;
 
 import cn.example.ioj.contract.i.ProblemsContract;
 

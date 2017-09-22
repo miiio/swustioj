@@ -1,4 +1,4 @@
-package cn.example.ioj.presenter.impl;
+package cn.example.ioj.presenter;
 
 import cn.example.ioj.contract.i.ProblemsContract;
 

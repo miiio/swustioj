@@ -1,8 +1,8 @@
-package cn.example.ioj.presenter.impl;
+package cn.example.ioj.presenter;
 
 import cn.example.ioj.contract.i.MainContract;
-import cn.example.ioj.model.impl.MainActivityModel;
-import cn.example.ioj.view.activity.impl.MainActivity;
+import cn.example.ioj.model.MainActivityModel;
+import cn.example.ioj.view.activity.MainActivity;
 
 /**
  * Created by L on 2017/9/21.

@@ -1,4 +1,4 @@
-package cn.example.ioj.view.activity.impl;
+package cn.example.ioj.view.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,9 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import cn.example.ioj.R;
 import cn.example.ioj.contract.i.BaseContract;
-import cn.example.ioj.presenter.impl.BasePresenter;
-import cn.example.ioj.view.activity.ActivityManager;
-import cn.example.ioj.view.activity.StatusBarManager;
+import cn.example.ioj.presenter.BasePresenter;
 
 /**
  * Activity的基类

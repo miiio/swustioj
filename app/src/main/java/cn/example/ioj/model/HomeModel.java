@@ -1,9 +1,9 @@
-package cn.example.ioj.model.impl;
+package cn.example.ioj.model;
 
 import cn.example.ioj.bean.BannerData;
 import cn.example.ioj.contract.i.HomeContract;
-import cn.example.ioj.model.i.NetWorkLoaderListener;
-import cn.example.ioj.model.i.ServicesRequest;
+import cn.example.ioj.contract.i.NetWorkLoaderListener;
+import cn.example.ioj.contract.i.ServicesRequest;
 import cn.example.ioj.util.Constant;
 import retrofit2.Call;
 import retrofit2.Callback;

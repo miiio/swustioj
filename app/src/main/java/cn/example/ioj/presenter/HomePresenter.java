@@ -1,9 +1,9 @@
-package cn.example.ioj.presenter.impl;
+package cn.example.ioj.presenter;
 
 import cn.example.ioj.bean.BannerData;
 import cn.example.ioj.contract.i.HomeContract;
-import cn.example.ioj.model.i.NetWorkLoaderListener;
-import cn.example.ioj.model.impl.HomeModel;
+import cn.example.ioj.contract.i.NetWorkLoaderListener;
+import cn.example.ioj.model.HomeModel;
 import cn.example.ioj.view.fragment.impl.HomeFragment;
 
 /**

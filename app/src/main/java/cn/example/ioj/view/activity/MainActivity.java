@@ -1,4 +1,4 @@
-package cn.example.ioj.view.activity.impl;
+package cn.example.ioj.view.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,8 +12,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.example.ioj.R;
 import cn.example.ioj.contract.i.MainContract;
-import cn.example.ioj.presenter.impl.BasePresenter;
-import cn.example.ioj.presenter.impl.MainPresenter;
+import cn.example.ioj.presenter.BasePresenter;
+import cn.example.ioj.presenter.MainPresenter;
 import cn.example.ioj.view.fragment.impl.HomeFragment;
 
 /**

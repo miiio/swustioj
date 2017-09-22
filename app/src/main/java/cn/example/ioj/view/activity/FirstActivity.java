@@ -1,11 +1,11 @@
-package cn.example.ioj.view.activity.impl;
+package cn.example.ioj.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import cn.example.ioj.R;
-import cn.example.ioj.presenter.impl.FirstPresenter;
-import cn.example.ioj.view.activity.i.IFirstActivity;
+import cn.example.ioj.contract.i.FirstContract;
+import cn.example.ioj.presenter.FirstPresenter;
 
 /**
  * 首屏界面
@@ -13,7 +13,7 @@ import cn.example.ioj.view.activity.i.IFirstActivity;
  * Created by wax on 2017/9/21.
  */
 
-public class FirstActivity extends BaseActivity<FirstPresenter> implements IFirstActivity{
+public class FirstActivity extends BaseActivity<FirstPresenter> implements FirstContract.View{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

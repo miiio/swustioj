@@ -1,4 +1,4 @@
-package cn.example.ioj.view.activity.impl;
+package cn.example.ioj.view.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,14 +12,14 @@ import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.example.ioj.R;
-import cn.example.ioj.presenter.impl.LoginPresenter;
-import cn.example.ioj.view.activity.i.ILoginActivity;
+import cn.example.ioj.contract.i.LoginContract;
+import cn.example.ioj.presenter.LoginPresenter;
 
 /**
  * Created by Tolean on 2017/9/21.
  */
 
-public class LoginActivity extends BaseActivity<LoginPresenter> implements ILoginActivity {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View {
     @BindView(R.id.et_login_username)
     TextInputEditText mEtLoginUsername;
     @BindView(R.id.til_login_username)

@@ -1,7 +1,6 @@
 package cn.example.ioj.contract.i;
 
 import cn.example.ioj.bean.BannerData;
-import cn.example.ioj.model.i.NetWorkLoaderListener;
 
 /**
  * Created by L on 2017/9/22.
