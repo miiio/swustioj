@@ -29,7 +29,7 @@ dependencies {
     compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.2' //底部导航栏
 
     compile 'com.youth.banner:banner:1.4.10' //首页轮播
-
+    compile 'de.hdodenhof:circleimageview:2.1.0'//圆形头像
     compile 'com.android.support:design:26.+'
     compile 'com.android.support:support-v4:26.+'
 

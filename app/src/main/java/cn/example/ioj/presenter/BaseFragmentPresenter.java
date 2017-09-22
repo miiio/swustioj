@@ -3,7 +3,7 @@ package cn.example.ioj.presenter;
 import cn.example.ioj.contract.i.BaseContract;
 import cn.example.ioj.contract.i.BaseFragmentContract;
 import cn.example.ioj.model.BaseModel;
-import cn.example.ioj.view.fragment.impl.BaseFragment;
+import cn.example.ioj.view.fragment.BaseFragment;
 
 /**
  * Created by L on 2017/9/21.

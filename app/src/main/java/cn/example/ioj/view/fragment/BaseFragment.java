@@ -1,4 +1,4 @@
-package cn.example.ioj.view.fragment.impl;
+package cn.example.ioj.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

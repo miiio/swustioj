@@ -38,6 +38,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         super.onCreate(savedInstanceState);
         initView();
         setListener();
+        setStatusBarTransparent();
     }
 
     @Override
