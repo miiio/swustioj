@@ -18,6 +18,7 @@ import cn.example.ioj.bean.BannerData;
 import cn.example.ioj.contract.i.HomeContract;
 import cn.example.ioj.presenter.HomePresenter;
 import cn.example.ioj.util.BannerImageLoader;
+import cn.example.ioj.view.fragment.BaseFragment;
 
 /**
  * Created by L on 2017/9/21.
