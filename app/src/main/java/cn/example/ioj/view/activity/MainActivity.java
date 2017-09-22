@@ -15,6 +15,7 @@ import cn.example.ioj.contract.i.MainContract;
 import cn.example.ioj.presenter.BasePresenter;
 import cn.example.ioj.presenter.MainPresenter;
 import cn.example.ioj.view.fragment.HomeFragment;
+import cn.example.ioj.view.fragment.ProblemsFragment;
 
 /**
  * 主界面
@@ -49,7 +50,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
                 .addItem(new BottomNavigationItem(R.drawable.ic_equalizer_black_24dp,"排名"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_person_black_24dp,"我"))
                 .setMode(BottomNavigationBar.MODE_FIXED)
-                .setInActiveColor(R.color.colorPrimary)
+                .setInActiveColor(R.color.grey)
                 .setActiveColor(R.color.green)
                 .initialise();
         bottombarMain.setTabSelectedListener(this);
@@ -67,6 +68,9 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
         switch (position){
             case 0: //首页
                 getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_main,new HomeFragment()).commit();
+                break;
+            case 1: //题库
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_main,new ProblemsFragment()).commit();
                 break;
         }
     }

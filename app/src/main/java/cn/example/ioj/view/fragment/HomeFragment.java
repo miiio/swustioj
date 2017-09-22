@@ -13,9 +13,6 @@ import com.youth.banner.listener.OnBannerListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import cn.example.ioj.R;
 import cn.example.ioj.bean.BannerData;
 import cn.example.ioj.contract.i.HomeContract;
@@ -27,9 +24,7 @@ import cn.example.ioj.util.BannerImageLoader;
  */
 
 public class HomeFragment extends BaseFragment<HomePresenter> implements HomeContract.View {
-    @BindView(R.id.banner_home)
     Banner bannerHome;
-    Unbinder unbinder;
     private View fragmentRootView;
     private BannerData mBannerData;
 
@@ -39,9 +34,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentRootView = inflater.inflate(R.layout.fragment_home, container, false);
-        unbinder = ButterKnife.bind(this, fragmentRootView);
-
-
+        bannerHome = (Banner)fragmentRootView.findViewById(R.id.banner_home);
         mPresenter.loadBanner();
         return fragmentRootView;
     }
@@ -55,13 +48,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     public void showError(int code) {
 
     }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
-
 
     /**
      * 显示banner
