@@ -11,9 +11,9 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.example.ioj.R;
+import cn.example.ioj.contract.i.MainContract;
 import cn.example.ioj.presenter.impl.BasePresenter;
 import cn.example.ioj.presenter.impl.MainPresenter;
-import cn.example.ioj.view.activity.i.IBaseActivity;
 import cn.example.ioj.view.fragment.impl.HomeFragment;
 
 /**
@@ -22,7 +22,7 @@ import cn.example.ioj.view.fragment.impl.HomeFragment;
  * Created by L on 2017/9/21.
  */
 
-public class MainActivity extends BaseActivity implements IBaseActivity, BottomNavigationBar.OnTabSelectedListener {
+public class MainActivity extends BaseActivity implements MainContract.View, BottomNavigationBar.OnTabSelectedListener {
 
     @BindView(R.id.framelayout_main)
     FrameLayout framelayoutMain;

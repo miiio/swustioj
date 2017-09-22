@@ -1,16 +1,16 @@
 package cn.example.ioj.presenter.impl;
 
 import cn.example.ioj.bean.BannerData;
+import cn.example.ioj.contract.i.HomeContract;
 import cn.example.ioj.model.i.NetWorkLoaderListener;
 import cn.example.ioj.model.impl.HomeModel;
-import cn.example.ioj.presenter.i.IHomePresenter;
 import cn.example.ioj.view.fragment.impl.HomeFragment;
 
 /**
  * Created by L on 2017/9/21.
  */
 
-public class HomePresenter extends BaseFragmentPresenter<HomeFragment,HomeModel> implements IHomePresenter {
+public class HomePresenter extends BaseFragmentPresenter<HomeFragment,HomeModel> implements HomeContract.Presenter {
     public HomePresenter(HomeFragment mView) {
         super(mView);
     }
@@ -32,7 +32,7 @@ public class HomePresenter extends BaseFragmentPresenter<HomeFragment,HomeModel>
 
             @Override
             public void onFailure(Throwable e) {
-
+                mFragment.showError(1);
             }
         });
     }

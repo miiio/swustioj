@@ -18,15 +18,15 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.example.ioj.R;
 import cn.example.ioj.bean.BannerData;
+import cn.example.ioj.contract.i.HomeContract;
 import cn.example.ioj.presenter.impl.HomePresenter;
 import cn.example.ioj.util.BannerImageLoader;
-import cn.example.ioj.view.fragment.i.IHomeFragment;
 
 /**
  * Created by L on 2017/9/21.
  */
 
-public class HomeFragment extends BaseFragment<HomePresenter> implements IHomeFragment {
+public class HomeFragment extends BaseFragment<HomePresenter> implements HomeContract.View {
     @BindView(R.id.banner_home)
     Banner bannerHome;
     Unbinder unbinder;

@@ -1,7 +1,7 @@
 package cn.example.ioj.model.impl;
 
 import cn.example.ioj.bean.BannerData;
-import cn.example.ioj.model.i.IHomeModel;
+import cn.example.ioj.contract.i.HomeContract;
 import cn.example.ioj.model.i.NetWorkLoaderListener;
 import cn.example.ioj.model.i.ServicesRequest;
 import cn.example.ioj.util.Constant;
@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by L on 2017/9/21.
  */
 
-public class HomeModel extends BaseModel implements IHomeModel {
+public class HomeModel extends BaseModel implements HomeContract.Model {
 
 
     @Override
