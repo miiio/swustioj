@@ -7,16 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cn.example.ioj.presenter.i.IBaseFragmentPresenter;
+import cn.example.ioj.contract.i.BaseFragmentContract;
 import cn.example.ioj.presenter.impl.BaseFragmentPresenter;
-import cn.example.ioj.view.fragment.i.IBaseFragment;
 
 /**
  * Created by L on 2017/9/21.
  */
 
-public abstract class BaseFragment<P extends BaseFragmentPresenter&IBaseFragmentPresenter>
-        extends Fragment implements IBaseFragment{
+public abstract class BaseFragment<P extends BaseFragmentPresenter&BaseFragmentContract.View>
+        extends Fragment implements BaseFragmentContract.View{
 
     protected P mPresenter;
 
