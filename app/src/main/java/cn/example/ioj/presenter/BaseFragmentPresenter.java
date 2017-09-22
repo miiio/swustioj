@@ -21,6 +21,13 @@ public abstract class BaseFragmentPresenter
         mModel = getModel();
     }
 
+    public void onDestroy() {
+        mFragment = null;
+        if (mModel != null) {
+            mModel.onDestroy();
+            mModel = null;
+        }
+    }
 
 
     protected abstract M getModel();

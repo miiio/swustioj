@@ -6,6 +6,7 @@ package cn.example.ioj.contract.i;
 
 public interface BaseFragmentContract {
     interface Model{
+
     }
 
     interface View{

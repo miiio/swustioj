@@ -26,5 +26,15 @@ public abstract class BaseFragment<P extends BaseFragmentPresenter&BaseFragmentC
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (mPresenter != null) {
+            mPresenter.onDestroy();
+            mPresenter = null;
+        }
+    }
+
+
     protected abstract P getPresenter();
 }
