@@ -1,7 +1,7 @@
 package cn.example.ioj.presenter;
 
-import cn.example.ioj.contract.i.BaseContract;
-import cn.example.ioj.contract.i.BaseFragmentContract;
+import cn.example.ioj.contract.BaseContract;
+import cn.example.ioj.contract.BaseFragmentContract;
 import cn.example.ioj.model.BaseModel;
 import cn.example.ioj.view.fragment.BaseFragment;
 

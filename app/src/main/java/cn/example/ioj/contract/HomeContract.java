@@ -1,4 +1,4 @@
-package cn.example.ioj.contract.i;
+package cn.example.ioj.contract;
 
 import cn.example.ioj.bean.BannerData;
 

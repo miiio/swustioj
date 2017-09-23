@@ -1,6 +1,6 @@
 package cn.example.ioj.model;
 
-import cn.example.ioj.contract.i.AboutMeContract;
+import cn.example.ioj.contract.AboutMeContract;
 
 /**
  * Created by Tolean on 2017/9/22.

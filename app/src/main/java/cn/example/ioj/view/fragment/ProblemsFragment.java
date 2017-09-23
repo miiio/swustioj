@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.example.ioj.R;
-import cn.example.ioj.contract.i.ProblemsContract;
+import cn.example.ioj.contract.ProblemsFragmentContract;
 import cn.example.ioj.presenter.BaseFragmentPresenter;
 import cn.example.ioj.view.adapter.ProblemsViewPagerAdapter;
 
@@ -21,7 +21,7 @@ import cn.example.ioj.view.adapter.ProblemsViewPagerAdapter;
  * Created by L on 2017/9/22.
  */
 
-public class ProblemsFragment extends BaseFragment implements ProblemsContract.View {
+public class ProblemsFragment extends BaseFragment implements ProblemsFragmentContract.View {
     View fragmentRootView;
     @BindView(R.id.prb_toolbar)
     Toolbar prbToolbar;

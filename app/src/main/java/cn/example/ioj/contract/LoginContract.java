@@ -1,4 +1,4 @@
-package cn.example.ioj.contract.i;
+package cn.example.ioj.contract;
 
 /**
  * Created by L on 2017/9/22.

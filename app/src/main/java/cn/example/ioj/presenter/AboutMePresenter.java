@@ -1,8 +1,7 @@
 package cn.example.ioj.presenter;
 
-import cn.example.ioj.contract.i.AboutMeContract;
+import cn.example.ioj.contract.AboutMeContract;
 import cn.example.ioj.model.AboutMeModel;
-import cn.example.ioj.model.BaseModel;
 import cn.example.ioj.view.fragment.AboutMeFragment;
 
 /**

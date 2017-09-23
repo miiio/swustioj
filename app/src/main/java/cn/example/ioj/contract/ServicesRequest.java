@@ -1,4 +1,4 @@
-package cn.example.ioj.contract.i;
+package cn.example.ioj.contract;
 
 import cn.example.ioj.bean.BannerData;
 import retrofit2.Call;
@@ -16,5 +16,5 @@ public interface ServicesRequest {
      * @return
      */
     @GET("banner.php")
-    Call<BannerData> getBannerData();
+    Call<BannerData> loadBannerData();
 }

@@ -1,4 +1,4 @@
-package cn.example.ioj.contract.i;
+package cn.example.ioj.contract;
 
 /**
  * Created by Tolean on 2017/9/22.

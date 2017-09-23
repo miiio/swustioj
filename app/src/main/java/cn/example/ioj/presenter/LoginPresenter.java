@@ -1,6 +1,6 @@
 package cn.example.ioj.presenter;
 
-import cn.example.ioj.contract.i.LoginContract;
+import cn.example.ioj.contract.LoginContract;
 import cn.example.ioj.model.BaseModel;
 import cn.example.ioj.view.activity.LoginActivity;
 

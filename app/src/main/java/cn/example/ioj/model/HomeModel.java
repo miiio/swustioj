@@ -1,9 +1,9 @@
 package cn.example.ioj.model;
 
 import cn.example.ioj.bean.BannerData;
-import cn.example.ioj.contract.i.HomeContract;
-import cn.example.ioj.contract.i.NetWorkLoaderListener;
-import cn.example.ioj.contract.i.ServicesRequest;
+import cn.example.ioj.contract.HomeContract;
+import cn.example.ioj.contract.NetWorkLoaderListener;
+import cn.example.ioj.contract.ServicesRequest;
 import cn.example.ioj.util.Constant;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,7 +28,7 @@ public class HomeModel extends BaseModel implements HomeContract.Model {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constant.ServerHost)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        retrofit.create(ServicesRequest.class).getBannerData().enqueue(new Callback<BannerData>() {
+        retrofit.create(ServicesRequest.class).loadBannerData().enqueue(new Callback<BannerData>() {
             @Override
             public void onResponse(Call<BannerData> call, Response<BannerData> response) {
                 listener.onSucceed(response.body());

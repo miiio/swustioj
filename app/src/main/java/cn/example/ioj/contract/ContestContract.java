@@ -1,7 +1,5 @@
 package cn.example.ioj.contract;
 
-import cn.example.ioj.contract.i.BaseFragmentContract;
-
 /**
  * Created by L on 2017/9/22.
  */

@@ -1,6 +1,6 @@
 package cn.example.ioj.model;
 
-import cn.example.ioj.contract.i.MainContract;
+import cn.example.ioj.contract.MainContract;
 
 /**
  * Created by L on 2017/9/21.

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import cn.example.ioj.R;
 import cn.example.ioj.bean.BannerData;
-import cn.example.ioj.contract.i.HomeContract;
+import cn.example.ioj.contract.HomeContract;
 import cn.example.ioj.presenter.AboutMePresenter;
 
 /**
