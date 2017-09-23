@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import cn.example.ioj.R;
-import cn.example.ioj.contract.i.FirstContract;
+import cn.example.ioj.contract.FirstContract;
 import cn.example.ioj.presenter.FirstPresenter;
 
 /**

@@ -11,7 +11,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.example.ioj.R;
-import cn.example.ioj.contract.i.MainContract;
+import cn.example.ioj.contract.MainContract;
 import cn.example.ioj.presenter.BasePresenter;
 import cn.example.ioj.presenter.MainPresenter;
 import cn.example.ioj.view.adapter.MainViewPagerAdapter;

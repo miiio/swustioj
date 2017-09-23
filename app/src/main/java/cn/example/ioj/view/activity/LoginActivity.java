@@ -16,7 +16,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.example.ioj.R;
-import cn.example.ioj.contract.i.LoginContract;
+import cn.example.ioj.contract.LoginContract;
 import cn.example.ioj.presenter.LoginPresenter;
 
 /**
