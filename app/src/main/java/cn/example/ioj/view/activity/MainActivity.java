@@ -3,7 +3,6 @@ package cn.example.ioj.view.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.widget.RelativeLayout;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -26,8 +25,6 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
 
     @BindView(R.id.bottombar_main)
     BottomNavigationBar bottombarMain;
-    @BindView(R.id.relativelayout_main)
-    RelativeLayout relativelayoutMain;
     @BindView(R.id.viewpager_main)
     ViewPager viewpagerMain;
 
@@ -57,6 +54,8 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
 
         viewpagerMain.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager()));
         viewpagerMain.setCurrentItem(0);
+
+
     }
 
     @Override
@@ -76,6 +75,10 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
 
                 viewpagerMain.setCurrentItem(1);
                 //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_main,new ProblemsFragment()).commit();
+                break;
+
+            case 3: //我
+                viewpagerMain.setCurrentItem(2);
                 break;
         }
     }

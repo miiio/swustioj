@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.example.ioj.view.fragment.AboutMeFragment;
 import cn.example.ioj.view.fragment.HomeFragment;
 import cn.example.ioj.view.fragment.ProblemsFragment;
 
@@ -22,6 +23,7 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter {
         fragmentList = new ArrayList<>();
         fragmentList.add(new HomeFragment());
         fragmentList.add(new ProblemsFragment());
+        fragmentList.add(new AboutMeFragment());
     }
 
 
@@ -33,6 +35,6 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 }

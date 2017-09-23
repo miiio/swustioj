@@ -7,15 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import cn.example.ioj.R;
-import cn.example.ioj.bean.BannerData;
-import cn.example.ioj.contract.HomeContract;
+import cn.example.ioj.contract.AboutMeContract;
 import cn.example.ioj.presenter.AboutMePresenter;
 
 /**
  * Created by Tolean on 2017/9/22.
  */
 
-public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements HomeContract.View {
+public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements AboutMeContract.View {
     private View fragmentRootView;
 
     @Nullable
@@ -30,11 +29,6 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements H
 
     @Override
     public void showError(int code) {
-
-    }
-
-    @Override
-    public void startBanner(BannerData bannerData) {
 
     }
 
