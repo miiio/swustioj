@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import cn.example.ioj.R;
 import cn.example.ioj.contract.BaseContract;
@@ -13,7 +14,7 @@ import cn.example.ioj.presenter.BasePresenter;
 /**
  * Activity的基类
  *
- * 泛型<P extends BasePresenter & {@link BaseContract.cn.example.ioj.contract.i.BaseContract.Presenter}>是Activity对应的Presenter的类型
+ * 泛型P是Activity对应的Presenter的类型
  * Presenter都继承于BasePresenter,在Activity的onDestroy()方法会调用BasePresenter的onDestroy()方法
  * 以此来销毁Presenter所持有的Activity对象
  * Presenter都应该实现的IBasePresenter接口的子接口,Activity通过接口来调用Presenter中的方法来获取数据
@@ -46,6 +47,10 @@ public abstract class BaseActivity<P extends BasePresenter & BaseContract.Presen
             mPresenter = null;
         }
         super.onDestroy();
+    }
+
+    public void showToast(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
 

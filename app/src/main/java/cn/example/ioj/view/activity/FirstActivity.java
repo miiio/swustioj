@@ -3,7 +3,6 @@ package cn.example.ioj.view.activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import cn.example.ioj.R;
 import cn.example.ioj.contract.FirstContract;
 import cn.example.ioj.presenter.FirstPresenter;
 
@@ -18,11 +17,7 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first);
-        Intent intent = new Intent(this,MainActivity.class);
-//        Intent intent=new Intent(this,LoginActivity.class);
-        startActivity(intent); //直接跳转到MainActivity
-
+        mPresenter.judgeJump();
     }
 
     @Override
@@ -33,5 +28,26 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
     @Override
     public void showError(int code) {
 
+    }
+
+    @Override
+    public void jumpToFirst() {
+        //setContentView(R.layout.activity_first);
+        jumpToLogin();
+    }
+
+    @Override
+    public void jumpToHome() {
+        jumpToLogin();
+//        Intent intent = new Intent(this,MainActivity.class);
+//        startActivity(intent);
+//        finish();
+    }
+
+    @Override
+    public void jumpToLogin() {
+        Intent intent = new Intent(this,LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

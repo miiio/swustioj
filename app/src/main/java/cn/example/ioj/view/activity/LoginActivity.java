@@ -1,5 +1,6 @@
 package cn.example.ioj.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,6 +68,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     private void initView() {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+
     }
 
     private void setListener() {
@@ -128,6 +132,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             @Override
             public void onClick(View view) {
                 //这里添加点击登陆后的代码
+                mPresenter.login(mEtLoginUsername.getText().toString(),
+                        mEtLoginPw.getText().toString());
             }
         });
         /**
@@ -144,5 +150,17 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void showError(int code) {
 
+    }
+
+    @Override
+    public void onLoginSucceed() {
+        Toast.makeText(this,"loginsucceed",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onLoginFailure(String errmsg) {
+        Toast.makeText(this,errmsg,Toast.LENGTH_SHORT).show();
     }
 }
