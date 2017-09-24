@@ -10,4 +10,8 @@ public class Constant {
     public final static String ServerHost = "http://boji9.cn/ioj/api/";
     public final static String OJServerHost = "http://acm.swust.edu.cn/";
     public final static String Csrftoken = "9ncByde5lp5i4fYYG5fPC1CMjLimE9fF";
+    public final static long LoginDirect=0;
+    public final static long LoginUsePw=1;
+    public final static long LoginAsTr=2;
 }
+

@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import cn.example.ioj.R;
 import cn.example.ioj.contract.LoginContract;
 import cn.example.ioj.presenter.LoginPresenter;
+import cn.example.ioj.util.Constant;
 
 /**
  * Created by Tolean on 2017/9/21.
@@ -143,6 +144,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             @Override
             public void onClick(View view) {
                 //这里添加以游客身份登陆的代码
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                intent.putExtra("mode", Constant.LoginAsTr);
+                startActivity(intent);
             }
         });
     }
@@ -156,6 +160,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     public void onLoginSucceed() {
         Toast.makeText(this,"loginsucceed",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this,MainActivity.class);
+        intent.putExtra("mode", Constant.LoginUsePw);
         startActivity(intent);
     }
 

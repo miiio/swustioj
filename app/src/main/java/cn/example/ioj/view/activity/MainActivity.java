@@ -13,6 +13,7 @@ import cn.example.ioj.R;
 import cn.example.ioj.contract.MainContract;
 import cn.example.ioj.presenter.BasePresenter;
 import cn.example.ioj.presenter.MainPresenter;
+import cn.example.ioj.util.Constant;
 import cn.example.ioj.view.adapter.MainViewPagerAdapter;
 
 /**
@@ -22,7 +23,7 @@ import cn.example.ioj.view.adapter.MainViewPagerAdapter;
  */
 
 public class MainActivity extends BaseActivity implements MainContract.View, BottomNavigationBar.OnTabSelectedListener {
-
+    private int mMode;
     @BindView(R.id.bottombar_main)
     BottomNavigationBar bottombarMain;
     @BindView(R.id.viewpager_main)
@@ -33,6 +34,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mMode=getIntent().getIntExtra("mode", (int) Constant.LoginAsTr);
         initView();
 
         //setStatusBarTransparent();
