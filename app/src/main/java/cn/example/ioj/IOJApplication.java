@@ -11,6 +11,15 @@ import cn.example.ioj.bean.UserBean;
 public class IOJApplication extends Application {
     private String session; //保存登陆的session
     private UserBean user;
+    private boolean isLogin; //是否已登录
+
+    public boolean isLogin() {
+        return isLogin;
+    }
+
+    public void setLogin(boolean login) {
+        isLogin = login;
+    }
 
     public UserBean getUser() {
         return user;
