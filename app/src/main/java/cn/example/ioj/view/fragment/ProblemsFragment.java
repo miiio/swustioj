@@ -37,7 +37,6 @@ public class ProblemsFragment extends BaseFragment implements ProblemsFragmentCo
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentRootView = inflater.inflate(R.layout.fragment_problems, container, false);
         unbinder = ButterKnife.bind(this, fragmentRootView);
-
         initView();
         return fragmentRootView;
 

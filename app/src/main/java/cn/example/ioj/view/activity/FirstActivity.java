@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import cn.example.ioj.contract.FirstContract;
 import cn.example.ioj.presenter.FirstPresenter;
+import cn.example.ioj.util.Constant;
 
 /**
  * 首屏界面
@@ -38,12 +39,12 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
 
     @Override
     public void jumpToHome() {
-        jumpToLogin();
-//
-//        Intent intent = new Intent(this,MainActivity.class);
-//        intent.putExtra("mode", Constant.LoginDirect);
-//        startActivity(intent);
-//        finish();
+        //jumpToLogin();
+
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.putExtra("mode", Constant.LoginDirect);
+        startActivity(intent);
+        finish();
     }
 
     @Override

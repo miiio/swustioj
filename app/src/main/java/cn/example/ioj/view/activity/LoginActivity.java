@@ -188,6 +188,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         Intent intent = new Intent(this,MainActivity.class);
         intent.putExtra("mode", Constant.LoginUsePw);
         startActivity(intent);
+        finish();
     }
 
     @Override
