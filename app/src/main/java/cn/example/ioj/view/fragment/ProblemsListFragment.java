@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,10 +42,8 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentRootView = inflater.inflate(R.layout.fragment_prblist, container, false);
         unbinder = ButterKnife.bind(this, fragmentRootView);
-
-        //initView();
-
         mPresenter.LoadProblemsListPage(1);
+        initView();
         return fragmentRootView;
     }
 
@@ -54,6 +53,13 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
             @Override
             protected void convert(BaseViewHolder helper, ProblemsBean item) {
                 helper.setText(R.id.tv_prblist_titel,item.getTitle());
+                if(item.isAc()){
+                    helper.setVisible(R.id.im_prblist_ac,true);
+                }
+                helper.setText(R.id.tv_prblist_id,"("+item.getId()+")");
+                helper.setText(R.id.tv_prblist_ac_rate,
+                        "("+String.valueOf(item.getAc_num())+"/"+String.valueOf(item.getSubmit_num())
+                                +")"+new DecimalFormat("0.00%").format((double) item.getAc_num()/item.getSubmit_num()));
             }
         };
 
@@ -90,7 +96,7 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
         }
         mProblemsBeanList.addAll(problemsList.getProblems());
 
-        initView();
+//        initView();
         //rvAdapter.notifyDataSetChanged();
     }
 
