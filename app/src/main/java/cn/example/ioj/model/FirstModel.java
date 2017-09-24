@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import cn.example.ioj.contract.FirstContract;
+import cn.example.ioj.util.Constant;
 
 /**
  *
@@ -26,7 +27,7 @@ public class FirstModel extends BaseModel implements FirstContract.Model{
 
     @Override
     public boolean isLogin() {
-        SharedPreferences sp = context.getSharedPreferences("user",Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(Constant.SharedPreferencesUser,Context.MODE_PRIVATE);
         String username = sp.getString("username","");
         return username != "";
     }

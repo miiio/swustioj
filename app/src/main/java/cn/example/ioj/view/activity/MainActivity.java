@@ -10,8 +10,8 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.example.ioj.R;
+import cn.example.ioj.bean.UserBean;
 import cn.example.ioj.contract.MainContract;
-import cn.example.ioj.presenter.BasePresenter;
 import cn.example.ioj.presenter.MainPresenter;
 import cn.example.ioj.util.Constant;
 import cn.example.ioj.view.adapter.MainViewPagerAdapter;
@@ -22,7 +22,7 @@ import cn.example.ioj.view.adapter.MainViewPagerAdapter;
  * Created by L on 2017/9/21.
  */
 
-public class MainActivity extends BaseActivity implements MainContract.View, BottomNavigationBar.OnTabSelectedListener {
+public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View, BottomNavigationBar.OnTabSelectedListener {
     private int mMode;
     @BindView(R.id.bottombar_main)
     BottomNavigationBar bottombarMain;
@@ -34,9 +34,9 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mMode=getIntent().getIntExtra("mode", (int) Constant.LoginAsTr);
+        mMode=getIntent().getIntExtra("mode",Constant.LoginAsTr);
         initView();
-
+        mPresenter.mainLogin(mMode);
         //setStatusBarTransparent();
     }
 
@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
     }
 
     @Override
-    protected BasePresenter getPresenter() {
+    protected MainPresenter getPresenter() {
         return new MainPresenter(this);
     }
 
@@ -98,5 +98,10 @@ public class MainActivity extends BaseActivity implements MainContract.View, Bot
     @Override
     public void showError(int code) {
 
+    }
+
+    @Override
+    public void onLoadUserInfo(UserBean userBean) {
+        showToast("欢迎！"+userBean.getReal_name());
     }
 }

@@ -47,6 +47,8 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.3.0' //网络请求库
     compile 'com.squareup.retrofit2:converter-gson:2.3.0' //gson支持
 
+    compile 'org.jsoup:jsoup:1.10.3' //html解析工具
+
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.28' //通用的recyclerviewAdapter
 
     compile 'com.android.support:cardview-v7:26.+'

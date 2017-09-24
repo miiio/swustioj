@@ -69,11 +69,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     private void initView() {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
-
     }
 
     private void setListener() {
+
+
         mEtLoginPw.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -137,6 +137,32 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                         mEtLoginPw.getText().toString());
             }
         });
+
+
+        //账号编辑框 焦点监听器
+        mEtLoginUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(!b){
+                    mImLoginClearUm.setVisibility(View.GONE);
+                }else if(mEtLoginUsername.getText().length() != 0){
+                    mImLoginClearUm.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        //密码编辑框 焦点监听器
+        mEtLoginPw.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(!b){
+                    mImLoginClearPw.setVisibility(View.GONE);
+                }else if(mEtLoginPw.getText().length() != 0){
+                    mImLoginClearPw.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         /**
          * 以游客身份登陆
          */

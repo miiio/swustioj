@@ -5,28 +5,25 @@ package cn.example.ioj.bean;
  */
 
 public class UserBean {
-    private String username;
+
+    /**
+     * username : 5120160446
+     * maxim : boji9.cn
+     * phone :
+     * student_class : 计科1602
+     * institution : CS
+     * qq :
+     * school : swust
+     * student_id : 5120160446
+     * real_name : 劳博基
+     * is_inner : false
+     * email : laobo3515@gmail.com
+     */
+
+
     private String password;
-    private String email;
-    private String school;
-    private String institution;
-    private String _class;
-    private String phone;
-    private String qq;
+    private String username;
     private String maxim;
-    private String studentId;
-    private String picUrl;
-    private int acNum;
-    private int chNum;
-    private int rank;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getPassword() {
         return password;
@@ -36,52 +33,26 @@ public class UserBean {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public boolean is_inner() {
+        return is_inner;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    private String phone;
+    private String student_class;
+    private String institution;
+    private String qq;
+    private String school;
+    private String student_id;
+    private String real_name;
+    private boolean is_inner;
+    private String email;
+
+    public String getUsername() {
+        return username;
     }
 
-    public String getSchool() {
-        return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
-    }
-
-    public String getInstitution() {
-        return institution;
-    }
-
-    public void setInstitution(String institution) {
-        this.institution = institution;
-    }
-
-    public String get_class() {
-        return _class;
-    }
-
-    public void set_class(String _class) {
-        this._class = _class;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getQq() {
-        return qq;
-    }
-
-    public void setQq(String qq) {
-        this.qq = qq;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getMaxim() {
@@ -92,43 +63,75 @@ public class UserBean {
         this.maxim = maxim;
     }
 
-    public String getStudentId() {
-        return studentId;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getPicUrl() {
-        return picUrl;
+    public String getStudent_class() {
+        return student_class;
     }
 
-    public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
+    public void setStudent_class(String student_class) {
+        this.student_class = student_class;
     }
 
-    public int getAcNum() {
-        return acNum;
+    public String getInstitution() {
+        return institution;
     }
 
-    public void setAcNum(int acNum) {
-        this.acNum = acNum;
+    public void setInstitution(String institution) {
+        this.institution = institution;
     }
 
-    public int getChNum() {
-        return chNum;
+    public String getQq() {
+        return qq;
     }
 
-    public void setChNum(int chNum) {
-        this.chNum = chNum;
+    public void setQq(String qq) {
+        this.qq = qq;
     }
 
-    public int getRank() {
-        return rank;
+    public String getSchool() {
+        return school;
     }
 
-    public void setRank(int rank) {
-        this.rank = rank;
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public String getStudent_id() {
+        return student_id;
+    }
+
+    public void setStudent_id(String student_id) {
+        this.student_id = student_id;
+    }
+
+    public String getReal_name() {
+        return real_name;
+    }
+
+    public void setReal_name(String real_name) {
+        this.real_name = real_name;
+    }
+
+    public boolean isIs_inner() {
+        return is_inner;
+    }
+
+    public void setIs_inner(boolean is_inner) {
+        this.is_inner = is_inner;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
