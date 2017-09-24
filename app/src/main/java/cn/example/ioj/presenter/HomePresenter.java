@@ -4,6 +4,7 @@ import cn.example.ioj.bean.BannerData;
 import cn.example.ioj.contract.HomeContract;
 import cn.example.ioj.contract.NetWorkLoaderListener;
 import cn.example.ioj.model.HomeModel;
+import cn.example.ioj.util.Constant;
 import cn.example.ioj.view.fragment.HomeFragment;
 
 /**
@@ -32,7 +33,7 @@ public class HomePresenter extends BaseFragmentPresenter<HomeFragment,HomeModel>
 
             @Override
             public void onFailure(Throwable e) {
-                mFragment.showError(1);
+                mFragment.showError(Constant.Error_ServerNetWorkError);
             }
         });
     }

@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import cn.example.ioj.bean.LoginResultBean;
+import cn.example.ioj.bean.UserBean;
 import cn.example.ioj.contract.LoginContract;
 import cn.example.ioj.contract.NetWorkLoaderListener;
 import cn.example.ioj.contract.SwustOJRequest;
 import cn.example.ioj.util.Constant;
+import cn.example.ioj.util.OkHttpClientWithLogin;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,6 +52,45 @@ public class LoginModel extends BaseModel implements LoginContract.Model {
                         listener.onFailure(t);
                     }
                 });
+    }
+
+    @Override
+    public void login(NetWorkLoaderListener<LoginResultBean> listener) {
+        SharedPreferences sp = context.getSharedPreferences(Constant.SharedPreferencesUser,Context.MODE_PRIVATE);
+        String username = sp.getString("username","");
+        String passworld = sp.getString("passworld","");
+        login(username,passworld,listener);
+    }
+
+    @Override
+    public void loadUserInfo(final NetWorkLoaderListener<UserBean> listener) {
+        SharedPreferences sp = context.getSharedPreferences(Constant.SharedPreferencesUser,Context.MODE_PRIVATE);
+        String username = sp.getString("username","");
+        String passworld = sp.getString("passworld","");
+
+
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constant.OJServerHost)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(OkHttpClientWithLogin.getOkHttpClientWithLogin())
+                .build();
+        retrofit.create(SwustOJRequest.class)
+                .loadUserInfo()
+                .enqueue(new Callback<UserBean>() {
+                    @Override
+                    public void onResponse(Call<UserBean> call, Response<UserBean> response) {
+                        if(response.body()!=null){
+                            listener.onSucceed(response.body());
+                        }else{
+                            listener.onFailure(new NullPointerException());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserBean> call, Throwable t) {
+                        listener.onFailure(t);
+                    }
+                });
+
     }
 
     @Override

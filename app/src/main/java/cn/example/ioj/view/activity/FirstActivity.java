@@ -39,7 +39,6 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
 
     @Override
     public void jumpToHome() {
-//        jumpToLogin();
         Intent intent = new Intent(this,MainActivity.class);
         intent.putExtra("mode", Constant.LoginDirect);
         startActivity(intent);

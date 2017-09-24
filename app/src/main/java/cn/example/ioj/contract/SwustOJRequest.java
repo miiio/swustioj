@@ -2,10 +2,12 @@ package cn.example.ioj.contract;
 
 import cn.example.ioj.bean.LoginResultBean;
 import cn.example.ioj.bean.ProblemsList;
+import cn.example.ioj.bean.UserBean;
 import cn.example.ioj.util.Constant;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
@@ -44,4 +46,6 @@ public interface SwustOJRequest {
                                 @Field("password")String password,
                                 @Field("csrfmiddlewaretoken")String token);
 
+    @GET("user/juserinfo/?operation=profile")
+    Call<UserBean> loadUserInfo();
 }

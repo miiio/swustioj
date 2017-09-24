@@ -40,7 +40,7 @@ public class LoginPresenter extends BasePresenter<LoginActivity,LoginModel> impl
 
             @Override
             public void onFailure(Throwable e) {
-                mView.showError(0);
+                mView.showError(Constant.Error_OJServerNetWorkError);
             }
         });
     }

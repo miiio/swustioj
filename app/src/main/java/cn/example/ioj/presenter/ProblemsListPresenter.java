@@ -4,6 +4,7 @@ import cn.example.ioj.bean.ProblemsList;
 import cn.example.ioj.contract.NetWorkLoaderListener;
 import cn.example.ioj.contract.ProblemsListContract;
 import cn.example.ioj.model.ProblemsListModel;
+import cn.example.ioj.util.Constant;
 import cn.example.ioj.view.fragment.ProblemsListFragment;
 
 /**
@@ -30,7 +31,7 @@ public class ProblemsListPresenter extends BaseFragmentPresenter<ProblemsListFra
 
             @Override
             public void onFailure(Throwable e) {
-                mFragment.showError(0);
+                mFragment.showError(Constant.Error_OJServerNetWorkError);
             }
         });
     }

@@ -69,8 +69,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     private void initView() {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
-
     }
 
     private void setListener() {
