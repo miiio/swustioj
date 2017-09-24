@@ -3,7 +3,7 @@
     <color name="colorPrimary">#47b256</color>
     <color name="colorPrimaryDark">#47b256</color>
     <color name="colorAccent">#47b256</color>
-
+    <color name="about_me_bg">#f0ebeb</color>
     <color name="white">#ffff</color>
     <color name="green">#47b256</color>
     <color name="red">#e51c23</color>
