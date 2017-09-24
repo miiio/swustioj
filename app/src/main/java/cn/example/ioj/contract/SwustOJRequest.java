@@ -1,6 +1,8 @@
 package cn.example.ioj.contract;
 
+import cn.example.ioj.bean.LoginResultBean;
 import cn.example.ioj.bean.ProblemsList;
+import cn.example.ioj.util.Constant;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -24,7 +26,6 @@ public interface SwustOJRequest {
 //    operation:COMBINE
 
     @FormUrlEncoded()
-    @Headers({"Cookie:csrftoken=9ncByde5lp5i4fYYG5fPC1CMjLimE9fF"})
     @POST("problem/jlist/")
     Call<ProblemsList> loadProblemsList(
             @Field("csrfmiddlewaretoken") String token,
@@ -35,5 +36,12 @@ public interface SwustOJRequest {
             @Field("page")int page,
             @Field("operation")String COMBINE
             );
+
+    @FormUrlEncoded()
+    @Headers({"Cookie:csrftoken="+Constant.Csrftoken})
+    @POST("user/ajaxlogin/")
+    Call<LoginResultBean> login(@Field("username")String username,
+                                @Field("password")String password,
+                                @Field("csrfmiddlewaretoken")String token);
 
 }

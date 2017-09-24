@@ -8,8 +8,8 @@
     tools:context="cn.example.ioj.view.activity.FirstActivity">
 
     <TextView
+        android:text="FirstActivity"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

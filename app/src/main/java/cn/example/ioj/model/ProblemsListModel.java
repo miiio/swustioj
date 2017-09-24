@@ -5,6 +5,7 @@ import cn.example.ioj.contract.ProblemsListContract;
 import cn.example.ioj.contract.NetWorkLoaderListener;
 import cn.example.ioj.contract.SwustOJRequest;
 import cn.example.ioj.util.Constant;
+import cn.example.ioj.util.OkHttpClientWithLogin;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,9 +33,10 @@ public class ProblemsListModel extends BaseModel implements ProblemsListContract
     public void LoadProblems(String prbid, String title, String source, String cloud, int page, final NetWorkLoaderListener<ProblemsList> listener) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constant.OJServerHost)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(OkHttpClientWithLogin.getOkHttpClientWithLogin())
                 .build();
         retrofit.create(SwustOJRequest.class)
-                .loadProblemsList("9ncByde5lp5i4fYYG5fPC1CMjLimE9fF",
+                .loadProblemsList(Constant.Csrftoken,
                         prbid,title,source,cloud,page,"COMBINE")
                 .enqueue(new Callback<ProblemsList>() {
                     @Override
