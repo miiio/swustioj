@@ -2,6 +2,7 @@ package cn.example.ioj.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,7 +29,7 @@ import cn.example.ioj.presenter.ProblemsListPresenter;
  * Created by L on 2017/9/22.
  */
 
-public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> implements ProblemsListContract.View {
+public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> implements ProblemsListContract.View ,BaseQuickAdapter.RequestLoadMoreListener{
     View fragmentRootView;
     @BindView(R.id.rv_prblist)
     RecyclerView rvPrblist;
@@ -36,17 +37,29 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
 
     private List<ProblemsBean> mProblemsBeanList;
     private BaseQuickAdapter rvAdapter;
+    private int page=1;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentRootView = inflater.inflate(R.layout.fragment_prblist, container, false);
         unbinder = ButterKnife.bind(this, fragmentRootView);
-        mPresenter.LoadProblemsListPage(1);
         initView();
+        mPresenter.LoadProblemsListPage(page++,true);
         return fragmentRootView;
     }
 
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        if(isVisibleToUser){
+//            mPresenter.LoadProblemsListPage(page++,true);
+//        }
+//    }
+
+    public void moveToTop(){
+        rvPrblist.scrollToPosition(0);
+    }
     private void initView() {
         rvPrblist.setLayoutManager(new LinearLayoutManager(getContext()));
         rvAdapter = new BaseQuickAdapter<ProblemsBean,BaseViewHolder>(R.layout.item_prblist,mProblemsBeanList) {
@@ -55,6 +68,8 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
                 helper.setText(R.id.tv_prblist_titel,item.getTitle());
                 if(item.isAc()){
                     helper.setVisible(R.id.im_prblist_ac,true);
+                }else{
+                    helper.setVisible(R.id.im_prblist_ac,false);
                 }
                 helper.setText(R.id.tv_prblist_id,"("+item.getId()+")");
                 helper.setText(R.id.tv_prblist_ac_rate,
@@ -62,7 +77,7 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
                                 +")"+new DecimalFormat("0.00%").format((double) item.getAc_num()/item.getSubmit_num()));
             }
         };
-
+        rvAdapter.setOnLoadMoreListener(this,rvPrblist);
         rvPrblist.setAdapter(rvAdapter);
     }
 
@@ -95,14 +110,19 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
             mProblemsBeanList.clear();
         }
         mProblemsBeanList.addAll(problemsList.getProblems());
+        rvAdapter.setNewData(mProblemsBeanList);
+        rvAdapter.notifyDataSetChanged();
 
-//        initView();
-        //rvAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onLoadMoreRequested() {
+        mPresenter.LoadProblemsListPage(page++,false);
     }
 }

@@ -38,9 +38,13 @@ public class LoginModel extends BaseModel implements LoginContract.Model {
                         if(response.body()!=null){
                             LoginResultBean loginResultBean = response.body();
                             String session = response.headers().get("Set-Cookie");
-                            session = session.substring(10,session.length()-18);
-                            loginResultBean.setSession(session);
-                            listener.onSucceed(loginResultBean);
+                            if(session==null){
+                                listener.onFailure(new NullPointerException());
+                            }else {
+                                session = session.substring(10, session.length() - 18);
+                                loginResultBean.setSession(session);
+                                listener.onSucceed(loginResultBean);
+                            }
                         }else{
 
                             listener.onFailure(new NullPointerException());

@@ -22,11 +22,11 @@ public class ProblemsListPresenter extends BaseFragmentPresenter<ProblemsListFra
     }
 
     @Override
-    public void LoadProblemsListPage(int page) {
+    public void LoadProblemsListPage(int page, final boolean clean) {
         mModel.LoadProblemsListPage(page, new NetWorkLoaderListener<ProblemsList>() {
             @Override
             public void onSucceed(ProblemsList data) {
-                mFragment.addPrblemsList(data,true);
+                mFragment.addPrblemsList(data,clean);
             }
 
             @Override

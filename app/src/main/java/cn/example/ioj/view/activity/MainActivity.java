@@ -37,6 +37,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         mMode=getIntent().getIntExtra("mode",Constant.LoginAsTr);
         initView();
         mPresenter.mainLogin(mMode);
+
         //setStatusBarTransparent();
     }
 
@@ -54,8 +55,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         bottombarMain.setTabSelectedListener(this);
         bottombarMain.setFirstSelectedPosition(0);
 
-        viewpagerMain.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager()));
-        viewpagerMain.setCurrentItem(0);
+
 
 
     }
@@ -103,5 +103,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     public void onLoadUserInfo(UserBean userBean) {
         showToast("欢迎！"+userBean.getReal_name());
+        viewpagerMain.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager()));
+        viewpagerMain.setCurrentItem(0);
     }
 }

@@ -89,11 +89,12 @@
 
                     <ImageView
                         android:id="@+id/im_login_clear_pw"
-                        android:paddingTop="25dp"
-                        android:paddingEnd="40dp"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginRight="47dp"
                         android:src="@drawable/clear"
                         android:layout_alignParentEnd="true"
-                        android:visibility="gone"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </RelativeLayout>

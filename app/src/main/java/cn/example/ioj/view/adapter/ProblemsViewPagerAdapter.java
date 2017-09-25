@@ -1,8 +1,10 @@
 package cn.example.ioj.view.adapter;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.widget.TableLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,12 @@ public class ProblemsViewPagerAdapter extends FragmentPagerAdapter {
         fragments.add(new ContestListFragment());
     }
 
+    /**
+     * 移动到顶部
+     */
+    public void moveToTop(int position){
+        ((ProblemsListFragment)fragments.get(0)).moveToTop();
+    }
     @Override
     public Fragment getItem(int position) {
         return fragments.get(position);

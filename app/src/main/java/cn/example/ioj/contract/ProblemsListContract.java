@@ -19,6 +19,6 @@ public interface ProblemsListContract {
     }
 
     interface Presenter extends BaseFragmentContract.Presenter{
-        void LoadProblemsListPage(int page);
+        void LoadProblemsListPage(int page,boolean clean);
     }
 }
