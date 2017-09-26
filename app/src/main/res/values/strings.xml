@@ -5,5 +5,5 @@
     <string name="login_btn_login">LOGIN</string>
     <string name="login_btn_login_as_tourist">LOGIN AS TOURIST</string>
     <string name="tourist_id">游客</string>
-    <string name="input_key_word">再此输入你想要搜索的内容</string>
+    <string name="input_key_word">在此输入你想要搜索的内容</string>
 </resources>

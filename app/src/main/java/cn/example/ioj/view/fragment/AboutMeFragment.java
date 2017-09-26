@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.jaeger.library.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,6 +56,7 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
     private int slidingDistance;
     private int imageBgHeight;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -64,15 +66,17 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
         mUserBean = ((IOJApplication)getActivity().getApplicationContext()).getUser();
         unbinder = ButterKnife.bind(this, fragmentRootView);
         initView();
+
         return fragmentRootView;
     }
+
 
     private void initView() {
         Glide.with(this).load("http://acm.swust.edu.cn/media/avatar/7652.jpg").into(imgMeImage);
 
         Glide.with(this)
                 .load("http://acm.swust.edu.cn/media/avatar/7652.jpg")
-                .bitmapTransform(new BlurTransformation(getActivity(),30,3))
+                .bitmapTransform(new BlurTransformation(getActivity(),20,3))
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -83,11 +87,12 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
                     public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
                         return false;
                     }
-                }).into(imgMeTopBg);
+                })
+                .into(imgMeTopBg);
 
         Glide.with(this)
                 .load("http://acm.swust.edu.cn/media/avatar/7652.jpg")
-                .bitmapTransform(new BlurTransformation(getActivity(),30,3))
+                .bitmapTransform(new BlurTransformation(getActivity(),20,3))
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -114,7 +119,7 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
 
         // 设置状态栏透明
         toolbarMe.setBackgroundColor(Color.TRANSPARENT);
-        //StatusBarUtil.setTranslucentForImageView(this,0,mToolbar);
+        StatusBarUtil.setTranslucentForImageView(getActivity(),0,toolbarMe);
 
         ViewGroup.LayoutParams imgItemBgparams = imgMeTopBg.getLayoutParams();
         // 获得高斯图背景的高度
@@ -177,6 +182,7 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
 
 
     public static int getStatusBarHeight(Context context) {
+        //return 0;
         // 获得状态栏高度
         int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
         return context.getResources().getDimensionPixelSize(resourceId);
