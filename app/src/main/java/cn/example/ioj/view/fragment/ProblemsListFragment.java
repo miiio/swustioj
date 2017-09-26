@@ -2,7 +2,6 @@ package cn.example.ioj.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -74,7 +73,7 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
                 helper.setText(R.id.tv_prblist_id,"("+item.getId()+")");
                 helper.setText(R.id.tv_prblist_ac_rate,
                         "("+String.valueOf(item.getAc_num())+"/"+String.valueOf(item.getSubmit_num())
-                                +")"+new DecimalFormat("0.00%").format((double) item.getAc_num()/item.getSubmit_num()));
+                                +") "+new DecimalFormat("0.00%").format((double) item.getAc_num()/item.getSubmit_num()));
             }
         };
         rvAdapter.setOnLoadMoreListener(this,rvPrblist);

@@ -34,11 +34,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mMode=getIntent().getIntExtra("mode",Constant.LoginAsTr);
+        mMode = getIntent().getIntExtra("mode", Constant.LoginAsTr);
         initView();
         mPresenter.mainLogin(mMode);
-
-        //setStatusBarTransparent();
     }
 
     private void initView() {
@@ -54,10 +52,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 .initialise();
         bottombarMain.setTabSelectedListener(this);
         bottombarMain.setFirstSelectedPosition(0);
-
-
-
-
     }
 
     @Override
@@ -71,12 +65,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         switch (position) {
             case 0: //首页
                 viewpagerMain.setCurrentItem(0);
-                //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_main,new HomeFragment()).commit();
                 break;
             case 1: //题库
-
                 viewpagerMain.setCurrentItem(1);
-                //getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_main,new ProblemsFragment()).commit();
+                break;
+
+            case 2:
                 break;
 
             case 3: //我
@@ -97,12 +91,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     public void showError(int code) {
-
+        showToast("连接oj服务器失败...");
     }
 
     @Override
     public void onLoadUserInfo(UserBean userBean) {
-        showToast("欢迎！"+userBean.getReal_name());
+        showToast("欢迎！" + userBean.getReal_name());
         viewpagerMain.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager()));
         viewpagerMain.setCurrentItem(0);
     }

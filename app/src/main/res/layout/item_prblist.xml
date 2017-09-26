@@ -23,18 +23,21 @@
 
                 <TextView
                     android:text="测试"
+                    android:maxLines="3"
+                    android:textColor="@color/prblist_title"
                     android:textSize="18sp"
                     android:id="@+id/tv_prblist_titel"
                     android:layout_alignParentLeft="true"
+                    android:layout_marginRight="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <ImageView
                     android:id="@+id/im_prblist_ac"
                     android:src="@drawable/ac"
-                    android:visibility="gone"
                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:scaleType="fitXY"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"/>
             </RelativeLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -43,13 +46,12 @@
                 <TextView
                     android:text="AC/Submit"
                     android:textSize="15sp"
-                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:layout_marginLeft="15dp"
                     android:id="@+id/tv_prblist_ac_rate"
-                    android:text="_(100/1000)27.28%"
+                    android:text="(100/1000)27.28%"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView

@@ -8,45 +8,56 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/fakebar"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="@color/colorPrimary"/>
+
         <LinearLayout
             android:id="@+id/prb_toolbar"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize">
-            <TextView
-                android:id="@+id/tv_prb_title"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:text="题库"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <!--<TextView-->
+                <!--android:id="@+id/tv_prb_title"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="20sp"-->
+                <!--android:text="题库"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
             <FrameLayout
+                android:paddingBottom="1dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:id="@+id/search_et_input"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/search_et_input"
+                    android:id="@+id/et_search"
                     style="@style/SearchTitleEditView"
                     android:background="@drawable/search_fragment_toolbar"
                     />
                 <ImageView
-                    android:layout_gravity="center_vertical|end"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:src="@android:drawable/ic_menu_search"/>
+                    android:src="@drawable/ic_search_24dp"/>
             </FrameLayout>
 
         </LinearLayout>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tablayout_prb"
-            android:background="@color/white"
-            app:tabSelectedTextColor="@color/grey"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="40dp"
+            app:tabSelectedTextColor="@color/white">
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
