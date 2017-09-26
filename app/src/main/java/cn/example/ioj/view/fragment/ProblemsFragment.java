@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -18,6 +19,7 @@ import cn.example.ioj.R;
 import cn.example.ioj.contract.ProblemsFragmentContract;
 import cn.example.ioj.presenter.BaseFragmentPresenter;
 import cn.example.ioj.view.activity.MainActivity;
+import cn.example.ioj.view.activity.SearchActivity;
 import cn.example.ioj.view.adapter.ProblemsViewPagerAdapter;
 
 /**
@@ -34,7 +36,7 @@ public class ProblemsFragment extends BaseFragment implements ProblemsFragmentCo
     @BindView(R.id.viewpager_prb)
     ViewPager viewpagerPrb;
     @BindView(R.id.search_et_input)
-    FrameLayout mSearchEtInput;
+    EditText mSearchEtInput;
 
     @Nullable
     @Override
@@ -72,7 +74,7 @@ public class ProblemsFragment extends BaseFragment implements ProblemsFragmentCo
             @Override
             public void onClick(View view) {
                 //跳转到搜索界面
-//                startActivity(new Intent(ProblemsFragment.this.getActivity(),));
+                startActivity(new Intent(ProblemsFragment.this.getActivity(), SearchActivity.class));
             }
         });
     }
