@@ -1,5 +1,7 @@
 package cn.example.ioj.presenter;
 
+import android.util.Log;
+
 import cn.example.ioj.IOJApplication;
 import cn.example.ioj.bean.LoginResultBean;
 import cn.example.ioj.bean.UserBean;
@@ -29,6 +31,10 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
         return null;
     }
 
+    /**
+     * 加载用户全部信息
+     *
+     */
     @Override
     public void loadUserInfo() {
         loginModel.loadUserInfo(new NetWorkLoaderListener<UserBean>() {
@@ -55,8 +61,9 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
                         if(data.isCanlogin()){
                             ((IOJApplication)mView.getApplicationContext()).setSession(data.getSession());
                             OkHttpClientWithLogin.init(data.getSession(), Constant.Csrftoken);
+                            mView.onMainLoginCompleted(); //登陆成功，session获取完毕
+                            Log.v("Lao","获取Session成功");
                             loadUserInfo();
-                            mView.onMainLoginCompleted();
                         }else{
                             mView.showError(Constant.Error_OJServerNetWorkError);
                             mainLogin(Constant.LoginAsTr); //登陆失败的话用游客模式
@@ -66,14 +73,17 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
                     @Override
                     public void onFailure(Throwable e) {
                         mView.showError(Constant.Error_OJServerNetWorkError);
+                        mainLogin(Constant.LoginAsTr); //登陆失败的话用游客模式
                     }
                 });
                 break;
             case Constant.LoginUsePw: //已经在loginActivity内登陆
+                //登陆以完成，session获取完毕
+                mView.onMainLoginCompleted();
+
                 //获取用户信息
                 loadUserInfo();
 
-                mView.onMainLoginCompleted();
                 break;
             case Constant.LoginAsTr: //游客登陆模式
                 OkHttpClientWithLogin.init("",Constant.Csrftoken);

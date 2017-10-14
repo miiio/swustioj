@@ -57,7 +57,8 @@
             android:id="@+id/tablayout_prb"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            app:tabSelectedTextColor="@color/white">
+            app:tabSelectedTextColor="@color/white"
+            app:tabIndicatorColor="@color/white">
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>

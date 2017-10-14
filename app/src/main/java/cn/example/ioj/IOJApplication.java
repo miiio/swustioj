@@ -3,6 +3,7 @@ package cn.example.ioj;
 import android.app.Application;
 
 import cn.example.ioj.bean.UserBean;
+import cn.example.ioj.bean.UserProblemsBean;
 
 /**
  * Created by wax on 2017/9/21.

@@ -20,6 +20,7 @@ import cn.example.ioj.contract.ProblemsFragmentContract;
 import cn.example.ioj.presenter.BaseFragmentPresenter;
 import cn.example.ioj.view.activity.MainActivity;
 import cn.example.ioj.view.activity.SearchActivity;
+import cn.example.ioj.view.adapter.AboutMeViewPagerAdapter;
 import cn.example.ioj.view.adapter.ProblemsViewPagerAdapter;
 
 /**

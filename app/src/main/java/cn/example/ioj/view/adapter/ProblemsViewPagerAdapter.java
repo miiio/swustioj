@@ -31,7 +31,9 @@ public class ProblemsViewPagerAdapter extends FragmentPagerAdapter {
      * 移动到顶部
      */
     public void moveToTop(int position){
-        ((ProblemsListFragment)fragments.get(0)).moveToTop();
+        if(position == 0) {
+            ((ProblemsListFragment) fragments.get(0)).moveToTop();
+        }
     }
     @Override
     public Fragment getItem(int position) {
