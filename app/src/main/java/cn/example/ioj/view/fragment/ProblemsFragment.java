@@ -36,7 +36,7 @@ public class ProblemsFragment extends BaseFragment implements ProblemsFragmentCo
     @BindView(R.id.viewpager_prb)
     ViewPager viewpagerPrb;
     @BindView(R.id.search_et_input)
-    EditText mSearchEtInput;
+    FrameLayout mSearchEtInput;
 
     @Nullable
     @Override

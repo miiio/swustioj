@@ -56,8 +56,10 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
                             ((IOJApplication)mView.getApplicationContext()).setSession(data.getSession());
                             OkHttpClientWithLogin.init(data.getSession(), Constant.Csrftoken);
                             loadUserInfo();
+                            mView.onMainLoginCompleted();
                         }else{
                             mView.showError(Constant.Error_OJServerNetWorkError);
+                            mainLogin(Constant.LoginAsTr); //登陆失败的话用游客模式
                         }
                     }
 
@@ -70,10 +72,14 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
             case Constant.LoginUsePw: //已经在loginActivity内登陆
                 //获取用户信息
                 loadUserInfo();
+
+                mView.onMainLoginCompleted();
                 break;
             case Constant.LoginAsTr: //游客登陆模式
                 OkHttpClientWithLogin.init("",Constant.Csrftoken);
                 ((IOJApplication)mView.getApplicationContext()).setLogin(false);
+
+                mView.onMainLoginCompleted();
                 break;
         }
     }
