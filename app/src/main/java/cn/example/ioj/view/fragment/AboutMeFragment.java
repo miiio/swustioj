@@ -76,10 +76,11 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentRootView = inflater.inflate(R.layout.fragment_about_me, container, false);
-        mUserBean = ((IOJApplication) getActivity().getApplicationContext()).getUser();
         unbinder = ButterKnife.bind(this, fragmentRootView);
-
-        initView();
+        if(((IOJApplication)getActivity().getApplicationContext()).isLogin()) {
+            mUserBean = ((IOJApplication) getActivity().getApplicationContext()).getUser();
+            initView();
+        }
         return fragmentRootView;
     }
 
