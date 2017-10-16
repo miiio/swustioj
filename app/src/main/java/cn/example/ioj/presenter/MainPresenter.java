@@ -42,6 +42,8 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
             public void onSucceed(UserBean data) {
                 ((IOJApplication)mView.getApplicationContext()).setUser(data);
                 mView.onLoadUserInfo(data);
+                //登陆以完成，session获取完毕
+                mView.onMainLoginCompleted();
             }
 
             @Override
@@ -60,8 +62,8 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
                     public void onSucceed(LoginResultBean data) {
                         if(data.isCanlogin()){
                             ((IOJApplication)mView.getApplicationContext()).setSession(data.getSession());
+                            ((IOJApplication)mView.getApplicationContext()).setLogin(true);
                             OkHttpClientWithLogin.init(data.getSession(), Constant.Csrftoken);
-                            mView.onMainLoginCompleted(); //登陆成功，session获取完毕
                             Log.v("Lao","获取Session成功");
                             loadUserInfo();
                         }else{
@@ -78,9 +80,6 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
                 });
                 break;
             case Constant.LoginUsePw: //已经在loginActivity内登陆
-                //登陆以完成，session获取完毕
-                mView.onMainLoginCompleted();
-
                 //获取用户信息
                 loadUserInfo();
 

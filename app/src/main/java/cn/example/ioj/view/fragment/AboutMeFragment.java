@@ -8,12 +8,12 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -31,6 +31,7 @@ import cn.example.ioj.bean.UserBean;
 import cn.example.ioj.contract.AboutMeContract;
 import cn.example.ioj.my_view.MyNestedScrollView;
 import cn.example.ioj.presenter.AboutMePresenter;
+import cn.example.ioj.util.DensityUtil;
 import cn.example.ioj.view.adapter.AboutMeViewPagerAdapter;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
@@ -61,6 +62,10 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
     TabLayout tablayoutMe;
     @BindView(R.id.viewpager_me)
     ViewPager viewpagerMe;
+    @BindView(R.id.Linearlayout_me_viewpager)
+    LinearLayout LinearlayoutMeViewpager;
+    @BindView(R.id.tv_me_Title)
+    TextView tvMeTitle;
     private View fragmentRootView;
 
     private UserBean mUserBean;
@@ -69,6 +74,7 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
     private int slidingDistance;
     private int imageBgHeight;
 
+    private int SHeight;
 
     @Nullable
     @Override
@@ -77,17 +83,36 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentRootView = inflater.inflate(R.layout.fragment_about_me, container, false);
         unbinder = ButterKnife.bind(this, fragmentRootView);
-        if(((IOJApplication)getActivity().getApplicationContext()).isLogin()) {
+
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        SHeight = dm.heightPixels;
+
+        if (((IOJApplication) getActivity().getApplicationContext()).isLogin()) {
             mUserBean = ((IOJApplication) getActivity().getApplicationContext()).getUser();
             initView();
         }
+
+
         return fragmentRootView;
     }
 
 
     private void initView() {
+        //获取状态栏高度
+        int toolbarHeight = toolbarMe.getLayoutParams().height;
+
+        int headerBgHeight = toolbarHeight + getStatusBarHeight(getActivity());
+
+        //设置高度
+        LinearLayout.LayoutParams param = (LinearLayout.LayoutParams) LinearlayoutMeViewpager.getLayoutParams();
+        //获取当前控件的布局对象
+        param.height = SHeight - headerBgHeight;//设置当前控件布局的高度
+        LinearlayoutMeViewpager.setLayoutParams(param);//将设置好的布局参数应用到控件中
+        nsvScrollviewMe.setmTopHeight(DensityUtil.dip2px(getContext(), 300) - headerBgHeight);
+
+
         //tablayout
-        viewpagerMe.setAdapter(new AboutMeViewPagerAdapter(getFragmentManager()));
+        viewpagerMe.setAdapter(new AboutMeViewPagerAdapter(getChildFragmentManager()));
         tablayoutMe.setupWithViewPager(viewpagerMe);
 
         tvMeUsername.setText(mUserBean.getUsername());
@@ -127,9 +152,7 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
                     }
                 }).into(imgMeBarBg);
 
-        int toolbarHeight = toolbarMe.getLayoutParams().height;
 
-        int headerBgHeight = toolbarHeight + getStatusBarHeight(getActivity());
         LinearlayoutMeTop.setPadding(0, headerBgHeight + 10, 0, 0);
         // 使背景图向上移动到图片的最底端，保留toolbar+状态栏的高度
         ViewGroup.LayoutParams params = imgMeBarBg.getLayoutParams();
@@ -170,19 +193,20 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
                         //渐变
                         drawable.mutate().setAlpha((int) (alpha * 255));
                         imgMeBarBg.setImageDrawable(drawable);
-                        toolbarMe.setTitle("");
+                        tvMeTitle.setText("");
                     } else {
                         drawable.mutate().setAlpha(255);
                         imgMeBarBg.setImageDrawable(drawable);
                         if (scrollY > slidingDistance + 120) {
-                            //mToolbar.setTitle(mMovie.getTitle());
+                            tvMeTitle.setText("我的");
                         } else {
-                            //mToolbar.setTitle("");
+                            tvMeTitle.setText("");
                         }
                     }
                 }
             }
         });
+
 
     }
 

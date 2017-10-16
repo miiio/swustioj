@@ -3,6 +3,7 @@ package cn.example.ioj.view.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +24,8 @@ public class AboutMeViewPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         fragments = new ArrayList<>();
         fragments.add(new MyAcProblemsFragment());
-        fragments.add(new MyAcProblemsFragment());
-        fragments.add(new MyAcProblemsFragment());
+        fragments.add(new ContestListFragment());
+        fragments.add(new ContestListFragment());
     }
 
     @Override
@@ -40,5 +41,11 @@ public class AboutMeViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return tableTitle[position];
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        //如果注释这行，那么不管怎么切换，page都不会被销毁
+        //super.destroyItem(container, position, object);
     }
 }

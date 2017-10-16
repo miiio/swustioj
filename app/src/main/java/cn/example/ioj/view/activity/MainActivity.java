@@ -61,10 +61,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 .setActiveColor(R.color.green)
                 .initialise();
         bottombarMain.setTabSelectedListener(this);
-        bottombarMain.setFirstSelectedPosition(0);
+        bottombarMain.setFirstSelectedPosition(1);
 
         viewpagerMain.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager()));
-        viewpagerMain.setCurrentItem(0);
+        viewpagerMain.setCurrentItem(1);
     }
 
     @Override
