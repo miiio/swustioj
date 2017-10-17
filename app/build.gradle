@@ -46,8 +46,8 @@ dependencies {
     compile 'com.android.support:support-v4:26.+'
 
 
-    compile 'com.github.mancj:MaterialSearchBar:0.7.1'
-
+    compile 'com.github.limuyang2:CardSearchView:1.0.6.7'
+    compile 'com.github.arcadefire:nice-spinner:1.2'//下拉菜单
 
 
 

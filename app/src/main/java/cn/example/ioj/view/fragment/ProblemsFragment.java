@@ -18,7 +18,6 @@ import butterknife.Unbinder;
 import cn.example.ioj.R;
 import cn.example.ioj.contract.ProblemsFragmentContract;
 import cn.example.ioj.presenter.BaseFragmentPresenter;
-import cn.example.ioj.view.activity.MainActivity;
 import cn.example.ioj.view.activity.SearchActivity;
 import cn.example.ioj.view.adapter.ProblemsViewPagerAdapter;
 
@@ -28,16 +27,19 @@ import cn.example.ioj.view.adapter.ProblemsViewPagerAdapter;
 
 public class ProblemsFragment extends BaseFragment implements ProblemsFragmentContract.View {
     View fragmentRootView;
+    @BindView(R.id.fakebar)
+    View mFakebar;
+    @BindView(R.id.et_search)
+    EditText mEtSearch;
+    @BindView(R.id.search_et_input)
+    FrameLayout mSearchEtInput;
     @BindView(R.id.prb_toolbar)
-    LinearLayout prbToolbar;
-    Unbinder unbinder;
+    LinearLayout mPrbToolbar;
     @BindView(R.id.tablayout_prb)
     TabLayout tablayoutPrb;
     @BindView(R.id.viewpager_prb)
     ViewPager viewpagerPrb;
-    @BindView(R.id.search_et_input)
-    EditText mSearchEtInput;
-
+    Unbinder unbinder;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -70,7 +72,7 @@ public class ProblemsFragment extends BaseFragment implements ProblemsFragmentCo
             }
         });
         viewpagerPrb.setCurrentItem(0);
-        mSearchEtInput.setOnClickListener(new View.OnClickListener() {
+        mEtSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //跳转到搜索界面
