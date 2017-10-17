@@ -5,12 +5,16 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
@@ -27,6 +31,8 @@ import cn.example.ioj.bean.UserBean;
 import cn.example.ioj.contract.AboutMeContract;
 import cn.example.ioj.my_view.MyNestedScrollView;
 import cn.example.ioj.presenter.AboutMePresenter;
+import cn.example.ioj.util.DensityUtil;
+import cn.example.ioj.view.adapter.AboutMeViewPagerAdapter;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 /**
@@ -48,6 +54,18 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
     @BindView(R.id.toolbar_me)
     Toolbar toolbarMe;
     Unbinder unbinder;
+    @BindView(R.id.tv_me_username)
+    TextView tvMeUsername;
+    @BindView(R.id.tv_me_acnum)
+    TextView tvMeAcnum;
+    @BindView(R.id.tablayout_me)
+    TabLayout tablayoutMe;
+    @BindView(R.id.viewpager_me)
+    ViewPager viewpagerMe;
+    @BindView(R.id.Linearlayout_me_viewpager)
+    LinearLayout LinearlayoutMeViewpager;
+    @BindView(R.id.tv_me_Title)
+    TextView tvMeTitle;
     private View fragmentRootView;
 
     private UserBean mUserBean;
@@ -56,6 +74,7 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
     private int slidingDistance;
     private int imageBgHeight;
 
+    private int SHeight;
 
     @Nullable
     @Override
@@ -63,20 +82,47 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentRootView = inflater.inflate(R.layout.fragment_about_me, container, false);
-        mUserBean = ((IOJApplication)getActivity().getApplicationContext()).getUser();
         unbinder = ButterKnife.bind(this, fragmentRootView);
-        initView();
+
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        SHeight = dm.heightPixels;
+
+        if (((IOJApplication) getActivity().getApplicationContext()).isLogin()) {
+            mUserBean = ((IOJApplication) getActivity().getApplicationContext()).getUser();
+            initView();
+        }
+
 
         return fragmentRootView;
     }
 
 
     private void initView() {
-        Glide.with(this).load("http://acm.swust.edu.cn/media/avatar/7652.jpg").into(imgMeImage);
+        //获取状态栏高度
+        int toolbarHeight = toolbarMe.getLayoutParams().height;
 
+        int headerBgHeight = toolbarHeight + getStatusBarHeight(getActivity());
+
+        //设置高度
+        LinearLayout.LayoutParams param = (LinearLayout.LayoutParams) LinearlayoutMeViewpager.getLayoutParams();
+        //获取当前控件的布局对象
+        param.height = SHeight - headerBgHeight;//设置当前控件布局的高度
+        LinearlayoutMeViewpager.setLayoutParams(param);//将设置好的布局参数应用到控件中
+        nsvScrollviewMe.setmTopHeight(DensityUtil.dip2px(getContext(), 300) - headerBgHeight);
+
+
+        //tablayout
+        viewpagerMe.setAdapter(new AboutMeViewPagerAdapter(getChildFragmentManager()));
+        tablayoutMe.setupWithViewPager(viewpagerMe);
+
+        tvMeUsername.setText(mUserBean.getUsername());
+        tvMeAcnum.setText("解决 " + mUserBean.getProblemsInfo().getNum_ac() + " | 挑战中" + " " + mUserBean.getProblemsInfo().getNum_ch()
+                + " | 排名 " + mUserBean.getRank());
+
+        Glide.with(this).load(mUserBean.getAvatar()).into(imgMeImage);
         Glide.with(this)
-                .load("http://acm.swust.edu.cn/media/avatar/7652.jpg")
-                .bitmapTransform(new BlurTransformation(getActivity(),20,3))
+                .load(mUserBean.getAvatar())
+                .bitmapTransform(new BlurTransformation(getActivity(), 20, 3))
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -91,8 +137,8 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
                 .into(imgMeTopBg);
 
         Glide.with(this)
-                .load("http://acm.swust.edu.cn/media/avatar/7652.jpg")
-                .bitmapTransform(new BlurTransformation(getActivity(),20,3))
+                .load(mUserBean.getAvatar())
+                .bitmapTransform(new BlurTransformation(getActivity(), 20, 3))
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -106,10 +152,8 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
                     }
                 }).into(imgMeBarBg);
 
-        int toolbarHeight = toolbarMe.getLayoutParams().height;
 
-        int headerBgHeight = toolbarHeight + getStatusBarHeight(getActivity());
-        LinearlayoutMeTop.setPadding(0,headerBgHeight+10,0,0);
+        LinearlayoutMeTop.setPadding(0, headerBgHeight + 10, 0, 0);
         // 使背景图向上移动到图片的最底端，保留toolbar+状态栏的高度
         ViewGroup.LayoutParams params = imgMeBarBg.getLayoutParams();
         ViewGroup.MarginLayoutParams ivTitleHeadBgParams = (ViewGroup.MarginLayoutParams) imgMeBarBg.getLayoutParams();
@@ -119,7 +163,7 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
 
         // 设置状态栏透明
         toolbarMe.setBackgroundColor(Color.TRANSPARENT);
-        StatusBarUtil.setTranslucentForImageView(getActivity(),0,toolbarMe);
+        StatusBarUtil.setTranslucentForImageView(getActivity(), 0, toolbarMe);
 
         ViewGroup.LayoutParams imgItemBgparams = imgMeTopBg.getLayoutParams();
         // 获得高斯图背景的高度
@@ -131,36 +175,38 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
 
 
     private void initScrollViewListener() {
-        final int titleBarAndStatusHeight =  toolbarMe.getLayoutParams().height + getStatusBarHeight(getActivity());
+        final int titleBarAndStatusHeight = toolbarMe.getLayoutParams().height + getStatusBarHeight(getActivity());
         slidingDistance = imageBgHeight - titleBarAndStatusHeight;
+
         nsvScrollviewMe.setMyNestedScrollViewScrollChangeListen(new MyNestedScrollView.MyNestedScrollViewScrollChangeListen() {
             @Override
             public void onScrollChange(int scrollX, int scrollY, int oldscrollX, int oldscrollY) {
                 //根据页面滑动距离改变Header透明度
-                if(scrollY<0){
+                if (scrollY < 0) {
                     scrollY = 0;
                 }
                 float alpha = scrollY * 1.0f / (slidingDistance);
                 Drawable drawable = imgMeBarBg.getDrawable();
                 //Log.v("v",scrollY+" "+slidingDistance);
-                if(drawable!=null){
-                    if(scrollY <= slidingDistance){
+                if (drawable != null) {
+                    if (scrollY <= slidingDistance) {
                         //渐变
-                        drawable.mutate().setAlpha((int)(alpha*255));
+                        drawable.mutate().setAlpha((int) (alpha * 255));
                         imgMeBarBg.setImageDrawable(drawable);
-                        toolbarMe.setTitle("");
-                    }else{
+                        tvMeTitle.setText("");
+                    } else {
                         drawable.mutate().setAlpha(255);
                         imgMeBarBg.setImageDrawable(drawable);
-                        if(scrollY>slidingDistance+120){
-                            //mToolbar.setTitle(mMovie.getTitle());
-                        }else{
-                            //mToolbar.setTitle("");
+                        if (scrollY > slidingDistance + 120) {
+                            tvMeTitle.setText("我的");
+                        } else {
+                            tvMeTitle.setText("");
                         }
                     }
                 }
             }
         });
+
 
     }
 

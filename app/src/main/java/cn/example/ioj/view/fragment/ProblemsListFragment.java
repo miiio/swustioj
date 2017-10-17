@@ -59,6 +59,7 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
     public void moveToTop(){
         rvPrblist.scrollToPosition(0);
     }
+
     private void initView() {
         rvPrblist.setLayoutManager(new LinearLayoutManager(getContext()));
         rvAdapter = new BaseQuickAdapter<ProblemsBean,BaseViewHolder>(R.layout.item_prblist,mProblemsBeanList) {

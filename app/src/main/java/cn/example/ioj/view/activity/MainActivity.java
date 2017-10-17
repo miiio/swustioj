@@ -32,11 +32,21 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mMode = getIntent().getIntExtra("mode", Constant.LoginAsTr);
+        mPresenter.mainLogin(mMode);
+    }
+
+
+    /**
+     * 以相应的登陆模式登陆后的回调
+     *
+     */
+    @Override
+    public void onMainLoginCompleted() {
+        //确定登陆完成后再加载布局
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mMode = getIntent().getIntExtra("mode", Constant.LoginAsTr);
         initView();
-        mPresenter.mainLogin(mMode);
     }
 
     private void initView() {
@@ -51,7 +61,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 .setActiveColor(R.color.green)
                 .initialise();
         bottombarMain.setTabSelectedListener(this);
-        bottombarMain.setFirstSelectedPosition(0);
+        bottombarMain.setFirstSelectedPosition(1);
+
+        viewpagerMain.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager()));
+        viewpagerMain.setCurrentItem(1);
     }
 
     @Override
@@ -97,7 +110,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     public void onLoadUserInfo(UserBean userBean) {
         showToast("欢迎！" + userBean.getReal_name());
-        viewpagerMain.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager()));
-        viewpagerMain.setCurrentItem(0);
+
     }
+
 }

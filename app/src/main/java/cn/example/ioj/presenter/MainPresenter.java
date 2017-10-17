@@ -1,5 +1,7 @@
 package cn.example.ioj.presenter;
 
+import android.util.Log;
+
 import cn.example.ioj.IOJApplication;
 import cn.example.ioj.bean.LoginResultBean;
 import cn.example.ioj.bean.UserBean;
@@ -29,6 +31,10 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
         return null;
     }
 
+    /**
+     * 加载用户全部信息
+     *
+     */
     @Override
     public void loadUserInfo() {
         loginModel.loadUserInfo(new NetWorkLoaderListener<UserBean>() {
@@ -36,6 +42,8 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
             public void onSucceed(UserBean data) {
                 ((IOJApplication)mView.getApplicationContext()).setUser(data);
                 mView.onLoadUserInfo(data);
+                //登陆以完成，session获取完毕
+                mView.onMainLoginCompleted();
             }
 
             @Override
@@ -54,26 +62,33 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
                     public void onSucceed(LoginResultBean data) {
                         if(data.isCanlogin()){
                             ((IOJApplication)mView.getApplicationContext()).setSession(data.getSession());
+                            ((IOJApplication)mView.getApplicationContext()).setLogin(true);
                             OkHttpClientWithLogin.init(data.getSession(), Constant.Csrftoken);
+                            Log.v("Lao","获取Session成功");
                             loadUserInfo();
                         }else{
                             mView.showError(Constant.Error_OJServerNetWorkError);
+                            mainLogin(Constant.LoginAsTr); //登陆失败的话用游客模式
                         }
                     }
 
                     @Override
                     public void onFailure(Throwable e) {
                         mView.showError(Constant.Error_OJServerNetWorkError);
+                        mainLogin(Constant.LoginAsTr); //登陆失败的话用游客模式
                     }
                 });
                 break;
             case Constant.LoginUsePw: //已经在loginActivity内登陆
                 //获取用户信息
                 loadUserInfo();
+
                 break;
             case Constant.LoginAsTr: //游客登陆模式
                 OkHttpClientWithLogin.init("",Constant.Csrftoken);
                 ((IOJApplication)mView.getApplicationContext()).setLogin(false);
+
+                mView.onMainLoginCompleted();
                 break;
         }
     }

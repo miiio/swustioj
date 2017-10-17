@@ -1,5 +1,7 @@
 package cn.example.ioj.bean;
 
+import cn.example.ioj.util.Constant;
+
 /**
  * Created by L on 2017/9/24.
  */
@@ -46,6 +48,45 @@ public class UserBean {
     private String real_name;
     private boolean is_inner;
     private String email;
+
+
+
+    private  UserProblemsBean problemsInfo;
+    public UserProblemsBean getProblemsInfo() {
+        return problemsInfo;
+    }
+
+    public void setProblemsInfo(UserProblemsBean problemsInfo) {
+        this.problemsInfo = problemsInfo;
+    }
+
+    private String avatar;
+    private int submit;
+    private int rank;
+
+    public String getAvatar() {
+        return Constant.OJServerHost+avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public int getSubmit() {
+        return submit;
+    }
+
+    public void setSubmit(int submit) {
+        this.submit = submit;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
 
     public String getUsername() {
         return username;

@@ -1,40 +1,33 @@
 package cn.example.ioj.view.adapter;
 
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.widget.TableLayout;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.example.ioj.view.fragment.ContestListFragment;
-import cn.example.ioj.view.fragment.ProblemsListFragment;
+import cn.example.ioj.view.fragment.MyAcProblemsFragment;
+
 
 /**
- * Created by L on 2017/9/22.
+ * Created by wax on 2017/10/14.
  */
 
-public class ProblemsViewPagerAdapter extends FragmentPagerAdapter {
-    private String[] tableTitle = new String[] {"题目", "实验"};
+public class AboutMeViewPagerAdapter extends FragmentPagerAdapter {
+    private String[] tableTitle = new String[] {"已解决", "挑战中","关于我"};
     private List<Fragment> fragments;
 
-    public ProblemsViewPagerAdapter(FragmentManager fm) {
+    public AboutMeViewPagerAdapter(FragmentManager fm) {
         super(fm);
         fragments = new ArrayList<>();
-        fragments.add(new ProblemsListFragment());
+        fragments.add(new MyAcProblemsFragment());
+        fragments.add(new ContestListFragment());
         fragments.add(new ContestListFragment());
     }
 
-    /**
-     * 移动到顶部
-     */
-    public void moveToTop(int position){
-        if(position == 0) {
-            ((ProblemsListFragment) fragments.get(0)).moveToTop();
-        }
-    }
     @Override
     public Fragment getItem(int position) {
         return fragments.get(position);
@@ -42,11 +35,17 @@ public class ProblemsViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         return tableTitle[position];
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        //如果注释这行，那么不管怎么切换，page都不会被销毁
+        //super.destroyItem(container, position, object);
     }
 }

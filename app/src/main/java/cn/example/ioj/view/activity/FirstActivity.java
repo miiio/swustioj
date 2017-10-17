@@ -18,6 +18,7 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mPresenter.judgeJump();
     }
 

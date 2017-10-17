@@ -13,6 +13,7 @@ public interface MainContract {
 
     interface View extends BaseContract.View{
         void onLoadUserInfo(UserBean userBean);
+        void onMainLoginCompleted();
     }
 
     interface Presenter extends BaseContract.Presenter{
