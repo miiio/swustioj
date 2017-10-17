@@ -31,8 +31,6 @@ import cn.example.ioj.presenter.SearchPresenter;
  */
 
 public class SearchActivity extends BaseActivity implements SearchContract.View {
-
-
     @BindView(R.id.searchView)
     SearchView mSearchView;
     @BindView(R.id.rv_prblist)
@@ -49,23 +47,18 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
     }
 
     public void initView() {
-
-
-//        mSearchView.setOnSearchBackIconClickListener(new SearchView.OnSearchBackIconClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                SearchActivity.this.finish();
-//            }
-//        });
-        mSearchView=(SearchView)findViewById(R.id.searchView);
-        mSearchView.setSpinnerDate(new LinkedList<String>(Arrays.asList("ID","Title","Source","Cloud")));
-        mSearchView.setOnbackListener(new View.OnClickListener() {
+       mSearchView.setOnbackListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SearchActivity.this.finish();
             }
         });
-//        mSearchView.setSpinnerOnItemSelectedLisenter();
+        mSearchView.setOnSearchListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                ((SearchPresenter)mPresenter).loadSearchProblemList(mSearchView.getSearchType(),1,false);
+            }
+        });
         rvPrblist.setLayoutManager(new LinearLayoutManager(this));
         rvAdapter = new BaseQuickAdapter<ProblemsList.ProblemsBean,BaseViewHolder>(R.layout.item_prblist,mProblemsBeanList) {
             @Override
@@ -85,19 +78,6 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
 
         rvPrblist.setAdapter(rvAdapter);
 
-//        mSearchView.setOnSearchActionListener(new SearchView.OnSearchActionListener() {
-//
-//            @Override
-//
-//            public void onSearchAction(String searchText) {
-//
-//                ((SearchPresenter)mPresenter).loadSearchProblemList(1,1,true);
-//
-//                mSearchView.addOneHistory(searchText);
-//
-//            }
-//
-//        });
     }
 
     /**

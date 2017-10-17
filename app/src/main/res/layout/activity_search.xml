@@ -14,7 +14,7 @@
     <cn.example.ioj.my_view.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="40dp">
 
     </cn.example.ioj.my_view.SearchView>
     <android.support.v7.widget.RecyclerView

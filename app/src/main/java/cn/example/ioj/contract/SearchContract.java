@@ -16,6 +16,6 @@ public interface SearchContract {
     }
 
     interface Presenter extends BaseFragmentContract.Presenter {
-        public void loadSearchProblemList(int searchtype,int page,boolean clean);
+        public void loadSearchProblemList(int searchtype,String text,int page,boolean clean);
     }
 }
