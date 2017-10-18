@@ -10,6 +10,26 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="WrapMatch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="WrapMatch.Horizontal">
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="WrapMatch.Vertical">
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="WrapWrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="WrapWrap.Horizontal">
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="WrapWrap.Vertical">
+        <item name="android:orientation">vertical</item>
+    </style>
     <style name="SearchTitleEditView">
         <item name="android:textColor">@color/black</item>
         <item name="android:layout_width">match_parent</item>
@@ -26,5 +46,29 @@
         <item name="android:paddingLeft">45dp</item>
         <item name="android:textColorHint">@color/grey</item>
         <item name="android:hint">@string/input_key_word</item>
+    </style>
+    <style name="BookDetailShowMore" parent="@style/WrapWrap">
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+    </style>
+    <style name="BookDetailShrink" parent="@style/WrapWrap">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:layout_marginRight">34dp</item>
+        <item name="android:text">展开</item>
+    </style>
+
+    <style name="BookDetailSpreadImage" parent="@style/WrapWrap">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:background">@drawable/ic_details_more</item>
+    </style>
+
+    <style name="BookDetailShrinkImage" parent="@style/WrapWrap">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:background">@drawable/ic_shrink_up</item>
+        <item name="android:visibility">gone</item>
     </style>
 </resources>
