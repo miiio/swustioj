@@ -7,7 +7,7 @@
     android:paddingBottom="80dp">
 
 
-        <android.support.v4.widget.NestedScrollView
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <me.next.tagview.TagCloudView
@@ -22,7 +22,7 @@
                 app:tcvTextColor="@color/green"
                 app:tcvSingleLine="false"
                 app:tcvCanTagClick="false" />
-    </android.support.v4.widget.NestedScrollView>
+    </ScrollView>
 
 
 

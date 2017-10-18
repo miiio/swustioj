@@ -1,5 +1,6 @@
 package cn.example.ioj.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +24,7 @@ import cn.example.ioj.bean.ProblemsList;
 import cn.example.ioj.bean.ProblemsList.ProblemsBean;
 import cn.example.ioj.contract.ProblemsListContract;
 import cn.example.ioj.presenter.ProblemsListPresenter;
+import cn.example.ioj.view.activity.ProblemInfoActivity;
 
 /**
  * Created by L on 2017/9/22.
@@ -64,19 +66,28 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
         rvPrblist.setLayoutManager(new LinearLayoutManager(getContext()));
         rvAdapter = new BaseQuickAdapter<ProblemsBean,BaseViewHolder>(R.layout.item_prblist,mProblemsBeanList) {
             @Override
-            protected void convert(BaseViewHolder helper, ProblemsBean item) {
+            protected void convert(BaseViewHolder helper, final ProblemsBean item) {
                 helper.setText(R.id.tv_prblist_titel,item.getTitle());
                 if(item.isAc()){
                     helper.setVisible(R.id.im_prblist_ac,true);
                 }else{
                     helper.setVisible(R.id.im_prblist_ac,false);
                 }
+                helper.setOnClickListener(R.id.cardView_problemList, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(ProblemsListFragment.this.getActivity(),ProblemInfoActivity.class);
+                        intent.putExtra("id",item.getId());
+                        startActivity(intent);
+                    }
+                });
                 helper.setText(R.id.tv_prblist_id,"("+item.getId()+")");
                 helper.setText(R.id.tv_prblist_ac_rate,
                         "("+String.valueOf(item.getAc_num())+"/"+String.valueOf(item.getSubmit_num())
                                 +") "+new DecimalFormat("0.00%").format((double) item.getAc_num()/item.getSubmit_num()));
             }
         };
+
         rvAdapter.setOnLoadMoreListener(this,rvPrblist);
         rvPrblist.setAdapter(rvAdapter);
     }

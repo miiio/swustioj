@@ -9,6 +9,7 @@ import cn.example.ioj.bean.ProblemBean;
 
 public interface ProblemInfoContract {
     interface Model extends BaseContract.Model{
+        void loadInfoOnMyService(String id, NetWorkLoaderListener<ProblemBean> listener);
     }
 
     interface View extends BaseContract.View{
@@ -16,5 +17,6 @@ public interface ProblemInfoContract {
     }
 
     interface Presenter extends BaseContract.Presenter{
+        void loadInfo(String id);
     }
 }

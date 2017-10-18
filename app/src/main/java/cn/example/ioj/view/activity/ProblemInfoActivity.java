@@ -12,7 +12,7 @@ import cn.example.ioj.contract.ProblemInfoContract;
 import cn.example.ioj.my_view.TextCard;
 import cn.example.ioj.presenter.ProblemInfoPresenter;
 
-public class PromblemInfoActivity extends BaseActivity<ProblemInfoPresenter> implements ProblemInfoContract.View {
+public class ProblemInfoActivity extends BaseActivity<ProblemInfoPresenter> implements ProblemInfoContract.View {
 
     @BindView(R.id.tbar_prb_info)
     Toolbar mTbarPrbInfo;
@@ -27,21 +27,25 @@ public class PromblemInfoActivity extends BaseActivity<ProblemInfoPresenter> imp
     @BindView(R.id.sampleoutput)
     TextCard mSampleoutput;
 
+    private String _id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_promblem_info);
         ButterKnife.bind(this);
+        _id = getIntent().getStringExtra("id");
         initView();
+        mPresenter.loadInfo(_id);
     }
 
     private void initView() {
         mTbarPrbInfo.setNavigationIcon(R.drawable.ic_back);
-        mTbarPrbInfo.setTitle("A+B");
         mTbarPrbInfo.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //添加返回的语句
+                finish();
             }
         });
         setSupportActionBar(mTbarPrbInfo);
@@ -50,7 +54,6 @@ public class PromblemInfoActivity extends BaseActivity<ProblemInfoPresenter> imp
         mOutput.setTitle("Output");
         mSampleinput.setTitle("Sample Input");
         mSampleoutput.setTitle("Sample Output");
-        onSuccessed(new ProblemBean());
     }
 
     @Override
@@ -65,10 +68,16 @@ public class PromblemInfoActivity extends BaseActivity<ProblemInfoPresenter> imp
 
     @Override
     public void onSuccessed(ProblemBean problem) {
-        mDescription.setText(this.getString(R.string.test_description));
-        mInput.setText(this.getString(R.string.test_input));
-        mOutput.setText(this.getString(R.string.test_output));
-        mSampleinput.setText(this.getString(R.string.test_sampleinput));
-        mSampleoutput.setText(this.getString(R.string.test_sampleputput));
+//        mDescription.setText(this.getString(R.string.test_description));
+//        mInput.setText(this.getString(R.string.test_input));
+//        mOutput.setText(this.getString(R.string.test_output));
+//        mSampleinput.setText(this.getString(R.string.test_sampleinput));
+//        mSampleoutput.setText(this.getString(R.string.test_sampleputput));
+        mTbarPrbInfo.setTitle(problem.getTitle());
+        mDescription.setText(problem.getPrblem_content());
+        mInput.setText(problem.getProblem_input());
+        mOutput.setText(problem.getProblem_output());
+        mSampleinput.setText(problem.getProblem_samp_input());
+        mSampleoutput.setText(problem.getProblem_samp_output());
     }
 }

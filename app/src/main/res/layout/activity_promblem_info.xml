@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="cn.example.ioj.view.activity.PromblemInfoActivity">
+    tools:context="cn.example.ioj.view.activity.ProblemInfoActivity">
 <android.support.v7.widget.Toolbar
     android:id="@+id/tbar_prb_info"
     app:titleTextColor="@color/white"
