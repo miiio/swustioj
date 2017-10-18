@@ -7,7 +7,7 @@ package cn.example.ioj.util;
  */
 
 public class Constant {
-    public final static String ServerHost = "http://boji9.cn/ioj/api/";
+    public final static String ServerHost = "http://123.207.241.46/ioj/api/";
     public final static String OJServerHost = "http://acm.swust.edu.cn/";
     public final static String Csrftoken = "9ncByde5lp5i4fYYG5fPC1CMjLimE9fF";
 
