@@ -26,6 +26,14 @@ import java.util.List;
 
 import butterknife.BindView;
 import cn.example.ioj.R;
+import cn.example.ioj.bean.ProblemsList;
+import cn.example.ioj.contract.ServicesRequest;
+import cn.example.ioj.util.Constant;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Tolean on 2017/9/27.
@@ -175,5 +183,35 @@ public class SearchView extends FrameLayout {
             mSpEditor.putString(String.valueOf(i),"");
         }
         mSpEditor.commit();
+    }
+
+    private void loadTitleSuggest(String keyword){
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constant.ServerHost)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        retrofit.create(ServicesRequest.class)
+                .loadTitleSuggest(keyword)
+                .enqueue(new Callback<ProblemsList>() {
+                    @Override
+                    public void onResponse(Call<ProblemsList> call, Response<ProblemsList> response) {
+                        if(response.body()!=null){
+                            showSuggest(response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ProblemsList> call, Throwable t) {
+                        //什么都不做
+                    }
+                });
+    }
+
+    /**
+     * 显示关键字提示
+     *
+     * @param list
+     */
+    private void showSuggest(ProblemsList list){
+
     }
 }

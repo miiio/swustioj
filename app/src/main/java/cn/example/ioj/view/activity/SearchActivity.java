@@ -66,6 +66,9 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
                         mSearchView.getText(),page++,true);
             }
         });
+
+
+
         rvPrblist.setLayoutManager(new LinearLayoutManager(this));
         rvAdapter = new BaseQuickAdapter<ProblemsList.ProblemsBean,BaseViewHolder>(R.layout.item_prblist,mProblemsBeanList) {
             @Override
@@ -92,6 +95,7 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
         };
         rvAdapter.setOnLoadMoreListener(this,rvPrblist);
         rvPrblist.setAdapter(rvAdapter);
+
 
     }
 
@@ -121,6 +125,9 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
         rvAdapter.notifyDataSetChanged();
 
     }
+
+
+
     @Override
     public void showError(int code) {
 
