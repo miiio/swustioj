@@ -1,5 +1,7 @@
 package cn.example.ioj.presenter;
 
+import android.util.Log;
+
 import cn.example.ioj.bean.ProblemsList;
 import cn.example.ioj.contract.NetWorkLoaderListener;
 import cn.example.ioj.contract.SearchContract;
