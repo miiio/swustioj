@@ -42,7 +42,6 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
             public void onSucceed(UserBean data) {
                 ((IOJApplication)mView.getApplicationContext()).setUser(data);
                 mView.onLoadUserInfo(data);
-                //登陆以完成，session获取完毕
                 mView.onMainLoginCompleted();
             }
 
@@ -57,6 +56,11 @@ public class MainPresenter extends BasePresenter<MainActivity,MainActivityModel>
     public void mainLogin(int mode) {
         switch (mode){
             case Constant.LoginDirect: //使用保存过的密码登陆
+//                ((IOJApplication)mView.getApplicationContext()).setSession("9a4wb4q7oc0eogondnae46w1l6ng69kb");
+//                ((IOJApplication)mView.getApplicationContext()).setLogin(true);
+//                OkHttpClientWithLogin.init("9a4wb4q7oc0eogondnae46w1l6ng69kb", Constant.Csrftoken);
+//                Log.v("Lao","获取Session成功");
+//                loadUserInfo();
                 loginModel.login(new NetWorkLoaderListener<LoginResultBean>() {
                     @Override
                     public void onSucceed(LoginResultBean data) {

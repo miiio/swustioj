@@ -1,11 +1,10 @@
 package cn.example.ioj.model;
 
 import cn.example.ioj.bean.ProblemBean;
-import cn.example.ioj.bean.ProblemsList;
+import cn.example.ioj.contract.NetWorkLoaderListener;
 import cn.example.ioj.contract.ProblemInfoContract;
-import cn.example.ioj.contract.SwustOJRequest;
+import cn.example.ioj.contract.ServicesRequest;
 import cn.example.ioj.util.Constant;
-import cn.example.ioj.util.OkHttpClientWithLogin;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,23 +22,25 @@ public class ProblemInfoModel extends BaseModel implements ProblemInfoContract.M
     }
 
     @Override
-    public void loadProblem(String id) {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constant.OJServerHost)
+    public void loadInfoOnMyService(String id, final NetWorkLoaderListener<ProblemBean> listener) {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constant.ServerHost)
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(OkHttpClientWithLogin.getOkHttpClientWithLogin())
                 .build();
-        retrofit.create(SwustOJRequest.class)
-                .loadProblem(id)
+        retrofit.create(ServicesRequest.class)
+                .loadProblemInfo(id)
                 .enqueue(new Callback<ProblemBean>() {
-
                     @Override
                     public void onResponse(Call<ProblemBean> call, Response<ProblemBean> response) {
-
+                        if(response.body()!=null){
+                            listener.onSucceed(response.body());
+                        }else{
+                            listener.onFailure(new NullPointerException());
+                        }
                     }
 
                     @Override
                     public void onFailure(Call<ProblemBean> call, Throwable t) {
-
+                        listener.onFailure(t);
                     }
                 });
     }
