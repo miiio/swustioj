@@ -18,4 +18,9 @@ public class ProblemInfoPresenter extends BasePresenter<PromblemInfoActivity,Pro
     protected ProblemInfoModel getModel() {
         return new ProblemInfoModel();
     }
+
+    @Override
+    public void loadProblem(String id) {
+        mModel.loadProblem(id);
+    }
 }

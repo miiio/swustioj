@@ -9,6 +9,7 @@ import cn.example.ioj.bean.ProblemBean;
 
 public interface ProblemInfoContract {
     interface Model extends BaseContract.Model{
+        void loadProblem(String id);
     }
 
     interface View extends BaseContract.View{
@@ -16,5 +17,6 @@ public interface ProblemInfoContract {
     }
 
     interface Presenter extends BaseContract.Presenter{
+        void loadProblem(String id);
     }
 }

@@ -1,6 +1,7 @@
 package cn.example.ioj.contract;
 
 import cn.example.ioj.bean.LoginResultBean;
+import cn.example.ioj.bean.ProblemBean;
 import cn.example.ioj.bean.ProblemsList;
 import cn.example.ioj.bean.RankListInfo;
 import cn.example.ioj.bean.UserBean;
@@ -23,8 +24,16 @@ import retrofit2.http.Streaming;
  */
 
 public interface SwustOJRequest {
-
-
+    /**
+     * 获取问题详情
+     * @param id
+     * @return
+     */
+        @FormUrlEncoded()
+        @POST("problem/info/")
+        Call<ProblemBean> loadProblem(
+                @Field("_id")String id
+        );
     /**
      * 加载问题列表
      *
