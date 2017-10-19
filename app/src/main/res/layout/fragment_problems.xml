@@ -9,11 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/fakebar"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:background="@color/colorPrimary"/>
 
         <LinearLayout
             android:id="@+id/prb_toolbar"
@@ -40,8 +35,7 @@
                 <TextView
                     android:id="@+id/et_search"
                     style="@style/SearchTitleEditView"
-                    android:background="@drawable/search_fragment_toolbar"
-                    />
+                    android:background="@drawable/search_fragment_toolbar" />
                 <ImageView
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginTop="5dp"
