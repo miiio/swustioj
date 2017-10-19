@@ -26,6 +26,10 @@ public class ProblemInfoActivity extends BaseActivity<ProblemInfoPresenter> impl
     TextCard mSampleinput;
     @BindView(R.id.sampleoutput)
     TextCard mSampleoutput;
+    @BindView(R.id.hint)
+    TextCard hint;
+    @BindView(R.id.source)
+    TextCard source;
 
     private String _id;
 
@@ -41,6 +45,8 @@ public class ProblemInfoActivity extends BaseActivity<ProblemInfoPresenter> impl
 
     private void initView() {
         mTbarPrbInfo.setNavigationIcon(R.drawable.ic_back);
+        setSupportActionBar(mTbarPrbInfo);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mTbarPrbInfo.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,12 +54,13 @@ public class ProblemInfoActivity extends BaseActivity<ProblemInfoPresenter> impl
                 finish();
             }
         });
-        setSupportActionBar(mTbarPrbInfo);
         mDescription.setTitle("Description");
         mInput.setTitle("Input");
         mOutput.setTitle("Output");
         mSampleinput.setTitle("Sample Input");
         mSampleoutput.setTitle("Sample Output");
+        hint.setTitle("Hint");
+        source.setText("Source");
     }
 
     @Override
@@ -79,5 +86,7 @@ public class ProblemInfoActivity extends BaseActivity<ProblemInfoPresenter> impl
         mOutput.setText(problem.getProblem_output());
         mSampleinput.setText(problem.getProblem_samp_input());
         mSampleoutput.setText(problem.getProblem_samp_output());
+        hint.setText(problem.getProblem_hint());
+        source.setText(problem.getProblem_source());
     }
 }
