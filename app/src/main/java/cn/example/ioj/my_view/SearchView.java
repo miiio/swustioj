@@ -71,7 +71,7 @@ public class SearchView extends FrameLayout {
         mSharedPreferences=mContext.getSharedPreferences("remainder",Context.MODE_PRIVATE);
         mSpEditor=mSharedPreferences.edit();
         mReminder.setLayoutManager(new LinearLayoutManager(mContext));
-        mRemainderList=new ArrayList<String>(3);
+        mRemainderList=new ArrayList<String>();
         for(int i=0;i<10;i++){
             String s=mSharedPreferences.getString(String.valueOf(i),"");
             if(s!="")
@@ -175,6 +175,7 @@ public class SearchView extends FrameLayout {
     public void setOnSearchListener(OnClickListener listener) {
         mSearchListener=listener;
     }
+
     private void refreshRemainder(){
         for(int i=0;i<mRemainderList.size();i++){
             mSpEditor.putString(String.valueOf(i),mRemainderList.get(i));

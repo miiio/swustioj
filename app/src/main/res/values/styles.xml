@@ -10,6 +10,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="GreyTextTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColorPrimary">@color/grey</item>
+        <item name="android:textColorSecondary">#dddddd</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="WrapMatch">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
@@ -45,7 +53,7 @@
         <item name="android:inputType">text</item>
         <item name="android:paddingLeft">45dp</item>
         <item name="android:textColorHint">@color/grey</item>
-        <item name="android:hint">@string/input_key_word</item>
+        <item name="android:hint">@string/input_hint</item>
     </style>
     <style name="BookDetailShowMore" parent="@style/WrapWrap">
         <item name="android:visibility">gone</item>

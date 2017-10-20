@@ -23,5 +23,11 @@ public class Constant {
 
     public final static int Error_OJServerNetWorkError = 0; //OJ服务器网络错误
     public final static int Error_ServerNetWorkError = 1;  //服务器网络错误
+
+
+    //搜索界面
+    public static final int HISTORY = 0;
+    public static final int SUGGEST = 1;
+    public static final int SEARCHRESULT = 2;
 }
 
