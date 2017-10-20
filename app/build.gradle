@@ -61,6 +61,7 @@ dependencies {
 
     //状态栏
 
+    compile 'com.github.clans:fab:1.6.4'
 
     compile 'com.ms-square:expandableTextView:0.1.4'
 
