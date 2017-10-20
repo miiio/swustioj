@@ -82,4 +82,13 @@ public interface ServicesRequest {
     );
 
 
+    /**
+     * 关键字提示
+     *
+     * @param keyword
+     * @return
+     */
+    @GET("problem/suggest/")
+    Call<ProblemsList> loadTitleSuggest(@Query("kw") String keyword);
+
 }

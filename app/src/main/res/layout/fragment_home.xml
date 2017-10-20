@@ -4,11 +4,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/fakebar"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:background="@color/colorPrimary"/>
 
     <com.youth.banner.Banner
         android:id="@+id/banner_home"

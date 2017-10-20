@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spingarr">
-        <item>ID</item>
+        <item>id</item>
         <item>Title</item>
         <item>Source</item>
         <item>Cloud</item>
+    </string-array>
+
+    <string-array name="searchTypeName">
+        <item>题号</item>
+        <item>标题</item>
+        <item>来源</item>
+        <item>标签</item>
     </string-array>
 </resources>

@@ -1,6 +1,7 @@
 package cn.example.ioj.contract;
 
 import cn.example.ioj.bean.ProblemsList;
+import cn.example.ioj.presenter.BasePresenter;
 
 /**
  * Created by Tolean on 2017/9/26.
@@ -8,14 +9,18 @@ import cn.example.ioj.bean.ProblemsList;
 
 public interface SearchContract {
     interface Model extends BaseContract.Model {
-
+        void loadSuggest(String keyword, NetWorkLoaderListener<ProblemsList> listener);
     }
 
-    interface View extends BaseFragmentContract.View {
+    interface View extends BaseContract.View {
         void addPrblemsList(ProblemsList problemsList, boolean clean);
+        void setLoading(boolean loding);
+        void switchView(int view);
+        void showSuggest(ProblemsList list);
     }
 
-    interface Presenter extends BaseFragmentContract.Presenter {
-        public void loadSearchProblemList(int searchtype,String text,int page,boolean clean);
+    interface Presenter extends BaseContract.Presenter {
+        void loadSearchProblemList(int searchtype,String text,int page,boolean clean);
+        void getSuggest(String keyword);
     }
 }

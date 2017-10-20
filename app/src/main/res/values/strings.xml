@@ -5,7 +5,7 @@
     <string name="login_btn_login">LOGIN</string>
     <string name="login_btn_login_as_tourist">LOGIN AS TOURIST</string>
     <string name="tourist_id">游客</string>
-    <string name="input_key_word">在此输入你想要搜索的内容</string>
+    <string name="input_hint">在此输入你想要搜索的内容</string>
     <string name="test_description">假设有x1个字母A， x2个字母B,..... x26个字母Z，同时假设字母A的价值为1，
         字母B的价值为2,..... 字母Z的价值为26。那么，对于给定的字母，可以找到多少价值小于等于50的单词呢？单词的价值就是组成一个单词的所有字母的价值之和，比如，单词ACM的价值是1+3+14=18，单词HDU的价值是8+4+21=33。(组成的单词与排列顺序无关，比如ACM与CMA认为是同一个单词）。</string>
 <string name="test_input">输入首先是一个整数N，代表测试实例的个数。
