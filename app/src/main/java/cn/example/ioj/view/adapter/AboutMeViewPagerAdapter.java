@@ -10,6 +10,8 @@ import java.util.List;
 
 import cn.example.ioj.view.fragment.ContestListFragment;
 import cn.example.ioj.view.fragment.MyAcProblemsFragment;
+import cn.example.ioj.view.fragment.MyChallengingFragment;
+import cn.example.ioj.view.fragment.MyInfoFragment;
 
 
 /**
@@ -24,8 +26,8 @@ public class AboutMeViewPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         fragments = new ArrayList<>();
         fragments.add(new MyAcProblemsFragment());
-        fragments.add(new ContestListFragment());
-        fragments.add(new ContestListFragment());
+        fragments.add(new MyChallengingFragment());
+        fragments.add(new MyInfoFragment());
     }
 
     @Override

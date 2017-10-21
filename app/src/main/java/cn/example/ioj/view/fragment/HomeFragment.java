@@ -35,7 +35,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentRootView = inflater.inflate(R.layout.fragment_home, container, false);
         bannerHome = (Banner)fragmentRootView.findViewById(R.id.banner_home);
-        //mPresenter.loadBanner();
+        mPresenter.loadBanner();
         return fragmentRootView;
     }
 

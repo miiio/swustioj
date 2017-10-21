@@ -42,7 +42,7 @@ public class SearchPresenter extends BasePresenter<SearchActivity,SearchModel> i
         mModel.LoadProblems(id, title, source, cloud, page, new NetWorkLoaderListener<ProblemsList>() {
             @Override
             public void onSucceed(ProblemsList data) {
-                ((SearchActivity)(mView)).addPrblemsList(data,clean);
+                mView.addPrblemsList(data,clean);
             }
 
             @Override

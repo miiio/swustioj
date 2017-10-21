@@ -7,12 +7,13 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ScrollView;
 
 /**
  * Created by wax on 2017/9/3.
  */
 
-public class MyNestedScrollView extends NestedScrollView{
+public class MyNestedScrollView extends ScrollView{
 
 
     public void setMyNestedScrollViewScrollChangeListen(MyNestedScrollViewScrollChangeListen myNestedScrollViewScrollChangeListen) {

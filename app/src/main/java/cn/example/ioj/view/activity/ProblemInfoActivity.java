@@ -55,7 +55,7 @@ public class ProblemInfoActivity extends BaseActivity<ProblemInfoPresenter> impl
     private String _id;
     private TranslateAnimation mShowAction;
     private TranslateAnimation mHiddenAction;
-    private float mOldY = 0, mFirstY = 0;
+    private float mOldY = 10000000, mFirstY = 10000000;
 
 
 

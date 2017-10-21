@@ -42,7 +42,7 @@
                     android:maxLines="1"
                     android:text="测试"
                     android:textColor="@color/prblist_title"
-                    android:textSize="19sp" />
+                    android:textSize="18sp" />
 
                 <ImageView
                     android:id="@+id/im_prblist_ac"
@@ -62,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="AC/Submit"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tv_prblist_ac_rate"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:text="(100/1000)27.28%"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tv_prblist_id"
@@ -79,7 +79,7 @@
                     android:layout_alignParentRight="true"
                     android:gravity="end"
                     android:text="(0000)"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -88,5 +88,5 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/grey"/>
+        android:background="@color/grey_"/>
 </LinearLayout>
