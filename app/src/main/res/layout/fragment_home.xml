@@ -4,37 +4,36 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:id="@+id/prb_toolbar"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize">
-            <FrameLayout
-                android:id="@+id/search_et_input"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/et_search"
-                    style="@style/SearchTitleEditView"
-                    android:background="@drawable/search_fragment_toolbar" />
-                <ImageView
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:src="@drawable/ic_search_24dp"/>
-            </FrameLayout>
-        </LinearLayout>
-    </android.support.design.widget.AppBarLayout>
+    <!--<android.support.design.widget.AppBarLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<LinearLayout-->
+            <!--android:id="@+id/prb_toolbar"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?actionBarSize">-->
+            <!--<FrameLayout-->
+                <!--android:id="@+id/search_et_input"-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/et_search"-->
+                    <!--style="@style/SearchTitleEditView"-->
+                    <!--android:background="@drawable/search_fragment_toolbar" />-->
+                <!--<ImageView-->
+                    <!--android:layout_gravity="center_vertical|start"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:layout_marginLeft="30dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:src="@drawable/ic_search_24dp"/>-->
+            <!--</FrameLayout>-->
+        <!--</LinearLayout>-->
+    <!--</android.support.design.widget.AppBarLayout>-->
 
     <com.youth.banner.Banner
-        android:layout_marginTop="0.5dp"
         android:id="@+id/banner_home"
         android:layout_width="match_parent"
         android:layout_height="220dp">

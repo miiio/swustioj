@@ -20,6 +20,7 @@ import cn.example.ioj.R;
 import cn.example.ioj.contract.ProblemsFragmentContract;
 import cn.example.ioj.presenter.BaseFragmentPresenter;
 import cn.example.ioj.view.activity.SearchActivity;
+import cn.example.ioj.view.activity.StatusBarManager;
 import cn.example.ioj.view.adapter.ProblemsViewPagerAdapter;
 
 /**
@@ -39,6 +40,8 @@ public class ProblemsFragment extends BaseFragment implements ProblemsFragmentCo
     FrameLayout mSearchEtInput;
     @BindView(R.id.et_search)
     TextView mEtSearch;
+    @BindView(R.id.fakeBar)
+    View fakeBar;
 
     @Nullable
     @Override
@@ -52,6 +55,16 @@ public class ProblemsFragment extends BaseFragment implements ProblemsFragmentCo
     }
 
     private void initView() {
+        // 获得状态栏高度
+        int resourceId = getActivity().getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int statusHeight = getActivity().getResources().getDimensionPixelSize(resourceId);
+        //设置高度
+        LinearLayout.LayoutParams param = (LinearLayout.LayoutParams)fakeBar.getLayoutParams();
+        //获取当前控件的布局对象
+        param.height = statusHeight;//设置当前控件布局的高度
+        fakeBar.setLayoutParams(param);//将设置好的布局参数应用到控件中
+
+
         viewpagerPrb.setAdapter(new ProblemsViewPagerAdapter(getFragmentManager()));
         tablayoutPrb.setupWithViewPager(viewpagerPrb);
         tablayoutPrb.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

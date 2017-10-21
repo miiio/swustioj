@@ -1,6 +1,7 @@
 package cn.example.ioj.view.fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,15 @@ import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.header.TaurusHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
+import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -30,15 +40,18 @@ import cn.example.ioj.view.activity.ProblemInfoActivity;
  * Created by L on 2017/9/22.
  */
 
-public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> implements ProblemsListContract.View ,BaseQuickAdapter.RequestLoadMoreListener{
+public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> implements ProblemsListContract.View, BaseQuickAdapter.RequestLoadMoreListener {
     View fragmentRootView;
     @BindView(R.id.rv_prblist)
     RecyclerView rvPrblist;
     Unbinder unbinder;
+    @BindView(R.id.refreshlayut_prblist)
+    SmartRefreshLayout refreshlayutPrblist;
 
     private List<ProblemsBean> mProblemsBeanList;
     private BaseQuickAdapter rvAdapter;
-    private int page=1;
+    private int page = 1;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,7 +59,7 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
         fragmentRootView = inflater.inflate(R.layout.fragment_prblist, container, false);
         unbinder = ButterKnife.bind(this, fragmentRootView);
         initView();
-        mPresenter.LoadProblemsListPage(page++,true);
+        mPresenter.LoadProblemsListPage(page++, true);
         return fragmentRootView;
     }
 
@@ -58,38 +71,48 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
 //        }
 //    }
 
-    public void moveToTop(){
+    public void moveToTop() {
         rvPrblist.scrollToPosition(0);
     }
 
     private void initView() {
         rvPrblist.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvAdapter = new BaseQuickAdapter<ProblemsBean,BaseViewHolder>(R.layout.item_prblist,mProblemsBeanList) {
+        rvAdapter = new BaseQuickAdapter<ProblemsBean, BaseViewHolder>(R.layout.item_prblist, mProblemsBeanList) {
             @Override
             protected void convert(BaseViewHolder helper, final ProblemsBean item) {
-                helper.setText(R.id.tv_prblist_titel,item.getTitle());
-                if(item.isAc()){
-                    helper.setVisible(R.id.im_prblist_ac,true);
-                }else{
-                    helper.setVisible(R.id.im_prblist_ac,false);
+                helper.setText(R.id.tv_prblist_titel, item.getTitle());
+                if (item.isAc()) {
+                    helper.setVisible(R.id.im_prblist_ac, true);
+                } else {
+                    helper.setVisible(R.id.im_prblist_ac, false);
                 }
                 helper.setOnClickListener(R.id.cardView_problemList, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(ProblemsListFragment.this.getActivity(),ProblemInfoActivity.class);
-                        intent.putExtra("id",item.getId());
+                        Intent intent = new Intent(ProblemsListFragment.this.getActivity(), ProblemInfoActivity.class);
+                        intent.putExtra("id", item.getId());
                         startActivity(intent);
                     }
                 });
-                helper.setText(R.id.tv_prblist_id,"("+item.getId()+")");
+                helper.setText(R.id.tv_prblist_id, "(" + item.getId() + ")");
                 helper.setText(R.id.tv_prblist_ac_rate,
-                        "("+String.valueOf(item.getAc_num())+"/"+String.valueOf(item.getSubmit_num())
-                                +") "+new DecimalFormat("0.00%").format((double) item.getAc_num()/item.getSubmit_num()));
+                        "(" + String.valueOf(item.getAc_num()) + "/" + String.valueOf(item.getSubmit_num())
+                                + ") " + new DecimalFormat("0.00%").format((double) item.getAc_num() / item.getSubmit_num()));
             }
         };
 
-        rvAdapter.setOnLoadMoreListener(this,rvPrblist);
+        rvAdapter.setOnLoadMoreListener(this, rvPrblist);
         rvPrblist.setAdapter(rvAdapter);
+
+
+        //设置 Header
+        refreshlayutPrblist.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                page = 1;
+                mPresenter.LoadProblemsListPage(page++, true);
+            }
+        });
     }
 
     @Override
@@ -111,14 +134,15 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
      */
     @Override
     public void addPrblemsList(ProblemsList problemsList, boolean clean) {
-        if(problemsList == null){
+        if (problemsList == null) {
             return; //什么也没获取到
         }
-        if(mProblemsBeanList == null){
+        if (mProblemsBeanList == null) {
             mProblemsBeanList = new ArrayList<>();
         }
-        if(clean){
+        if (clean) {
             mProblemsBeanList.clear();
+            refreshlayutPrblist.finishRefresh();
         }
         mProblemsBeanList.addAll(problemsList.getProblems());
         rvAdapter.setNewData(mProblemsBeanList);
@@ -134,6 +158,6 @@ public class ProblemsListFragment extends BaseFragment<ProblemsListPresenter> im
 
     @Override
     public void onLoadMoreRequested() {
-        mPresenter.LoadProblemsListPage(page++,false);
+        mPresenter.LoadProblemsListPage(page++, false);
     }
 }

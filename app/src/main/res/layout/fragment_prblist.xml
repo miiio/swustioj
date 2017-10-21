@@ -4,13 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_prblist"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshlayut_prblist"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_prblist"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
 </LinearLayout>

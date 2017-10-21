@@ -202,6 +202,8 @@ public class SearchActivity extends BaseActivity<SearchPresenter> implements Sea
             @Override
             public void onClick(View view) {
                 etSearch.setText("");
+                refreshSearchHistory();
+                rvSearchHistoryAdapter.notifyDataSetChanged();
                 switchView(Constant.HISTORY);
             }
         });

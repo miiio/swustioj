@@ -111,7 +111,7 @@ public class StatusBarManager {
      *
      * @return 状态栏高度
      */
-    private int getStatusBarHeight() {
+    public int getStatusBarHeight() {
         int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
         return activity.getResources().getDimensionPixelSize(resourceId);
     }

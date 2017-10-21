@@ -162,8 +162,8 @@ public class AboutMeFragment extends BaseFragment<AboutMePresenter> implements A
         imgMeBarBg.setVisibility(View.VISIBLE);
 
         // 设置状态栏透明
-        toolbarMe.setBackgroundColor(Color.TRANSPARENT);
-        StatusBarUtil.setTranslucentForImageView(getActivity(), 0, toolbarMe);
+        //toolbarMe.setBackgroundColor(Color.TRANSPARENT);
+        //StatusBarUtil.setTranslucentForImageView(getActivity(), 0, toolbarMe);
 
         ViewGroup.LayoutParams imgItemBgparams = imgMeTopBg.getLayoutParams();
         // 获得高斯图背景的高度

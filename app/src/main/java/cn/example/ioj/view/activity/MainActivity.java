@@ -2,10 +2,13 @@ package cn.example.ioj.view.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.jaeger.library.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +26,8 @@ import cn.example.ioj.view.adapter.MainViewPagerAdapter;
  */
 
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View, BottomNavigationBar.OnTabSelectedListener {
+    @BindView(R.id.coordinatorlayout_main)
+    CoordinatorLayout coordinatorlayoutMain;
     private int mMode;
     @BindView(R.id.bottombar_main)
     BottomNavigationBar bottombarMain;
@@ -32,24 +37,17 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        initView();
+
         mMode = getIntent().getIntExtra("mode", Constant.LoginAsTr);
         mPresenter.mainLogin(mMode);
     }
 
 
-    /**
-     * 以相应的登陆模式登陆后的回调
-     *
-     */
-    @Override
-    public void onMainLoginCompleted() {
-        //确定登陆完成后再加载布局
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        initView();
-    }
-
     private void initView() {
+        StatusBarUtil.setTransparentForImageView(this,null);
         //设置底栏
         bottombarMain
                 .addItem(new BottomNavigationItem(R.drawable.ic_home_24dp, "首页"))
@@ -83,11 +81,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 viewpagerMain.setCurrentItem(1);
                 break;
 
-            case 2:
+            case 2: //排行榜
+                viewpagerMain.setCurrentItem(2);
                 break;
 
             case 3: //我
-                viewpagerMain.setCurrentItem(2);
+                viewpagerMain.setCurrentItem(3);
                 break;
         }
     }
@@ -108,7 +107,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     @Override
-    public void onLoadUserInfo(UserBean userBean) {
+    public void onLoginComplete() {
+
+    }
+
+    @Override
+    public void onLoadUserInfoComplete(UserBean userBean) {
         showToast("欢迎！" + userBean.getReal_name());
 
     }
